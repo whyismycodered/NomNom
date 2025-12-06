@@ -2,7 +2,7 @@ import { View, TextInput } from "react-native";
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-const SearchBar = () => {
+const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
     <View
       style={{
@@ -16,7 +16,12 @@ const SearchBar = () => {
       }}
     >
       <FontAwesome name="search" size={22} color="gray" style={{ marginRight: 10 }} />
-      <TextInput placeholder="What do you feel like cooking?" style={{ fontFamily: 'Montserrat-Regular' }} />
+      <TextInput
+        placeholder="What do you feel like cooking?"
+        style={{ fontFamily: 'Montserrat-Regular', flex: 1 }}
+        value={searchQuery}
+        onChangeText={setSearchQuery}
+      />
     </View>
   );
 };

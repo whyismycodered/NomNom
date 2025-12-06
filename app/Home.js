@@ -6,13 +6,14 @@ import BudgetInput from "../components/BudgetInput";
 import MealContainer from "../components/MealContainer";
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = React.useState("");
   const [budget, setBudget] = React.useState(500);
 
   return (
-    <SafeAreaView>
-      <View style={{ padding: 16, gap: 16 }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ padding: 16, gap: 16 }}>
         <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 16 }}>Great to see you!</Text>
-        <SearchBar />
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <BudgetInput
           budget={budget}
           setBudget={setBudget}
@@ -26,10 +27,8 @@ export default function Home() {
             Explore various food options tailored to your budget!
           </Text>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <MealContainer budget={budget} />
-        </ScrollView>
-      </View>
+        <MealContainer budget={budget} searchQuery={searchQuery} />
+      </ScrollView>
     </SafeAreaView>
   );
 }
