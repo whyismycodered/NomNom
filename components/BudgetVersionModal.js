@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, ActivityIndicator, ScrollView } from 'react-native';
-import Markdown from 'react-native-markdown-display';
+import Markdown from 'react-native-markdown-display'
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function BudgetVersionModal({
     visible,
@@ -21,7 +22,7 @@ export default function BudgetVersionModal({
             <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'center', padding: 16 }}>
                 <View style={{
                     backgroundColor: 'white',
-                    borderRadius: 16,
+                    borderRadius: 14,
                     padding: 16,
                     maxHeight: '75%',
                     shadowColor: '#000',
@@ -30,7 +31,10 @@ export default function BudgetVersionModal({
                     shadowOffset: { width: 0, height: 6 },
                     elevation: 6,
                 }}>
-                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, color: '#51225B' }}>{title}</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, }}>
+                        <MaterialCommunityIcons name="star-four-points" size={24} color="rgb(85, 135, 222)" style={{ marginRight: 4, position: 'absolute', top: 1}} />
+                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, color: '#51225B', marginLeft: 30}}>{title}</Text>
+                    </View>
                     <View style={{ height: 1, backgroundColor: '#E8D5EE', marginBottom: 12 }} />
 
                     {loading ? (

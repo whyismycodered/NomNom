@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const MealCard = ({ item, index, budget, onGenerate }) => {
     const router = useRouter();
@@ -79,7 +80,10 @@ const MealCard = ({ item, index, budget, onGenerate }) => {
                         alignSelf: 'center'
                     }}
                 >
-                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 13, color: 'white' }}>Generate Budget Version</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, color: 'white', width: '80%'}}>Generate Budget Version</Text>
+                        <MaterialCommunityIcons name="star-four-points" size={20} color="white" />
+                    </View>
                 </TouchableOpacity>
             )}
         </Animated.View>
