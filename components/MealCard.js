@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../theme/ThemeProvider';
 
-const MealCard = ({ item, index, budget, onGenerate }) => {
+const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
     const router = useRouter();
     const { theme } = useTheme();
     const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -37,9 +37,8 @@ const MealCard = ({ item, index, budget, onGenerate }) => {
 
     return (
         <Animated.View style={{
-            flex: 1,
-            margin: 4,
-            maxWidth: '50%',
+            width: `${100 / cols}%`,
+            padding: 6,
             opacity: fadeAnim,
             transform: [{ scale: scaleAnim }]
         }}>
@@ -64,10 +63,10 @@ const MealCard = ({ item, index, budget, onGenerate }) => {
                     })
                 }}
             >
-                <View style={{ alignSelf: 'center', opacity: isOutOfBudget ? 0.45 : 1 }}>
-                    <Image source={imageSource} style={{ width: 166, height: 166, borderRadius: 8 }} />
+                <View style={{ alignSelf: 'stretch', opacity: isOutOfBudget ? 0.45 : 1 }}>
+                    <Image source={imageSource} style={{ width: '100%', aspectRatio: 1, borderRadius: 8 }} />
                     <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, marginTop: 8, textAlign: 'left', letterSpacing: -0.4, color: theme.text }}>{item.name}</Text>
-                    <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: theme.subtext, marginVertical: 4, textAlign: 'left', maxWidth: 166, letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
+                    <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: theme.subtext, marginVertical: 4, textAlign: 'left', letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
                 </View>
             </TouchableOpacity>
             {isOutOfBudget && (

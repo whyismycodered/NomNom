@@ -27,7 +27,7 @@ function RootStack() {
       try {
         const value = await AsyncStorage.getItem('hasSeenOnboarding');
         setHasSeenOnboarding(value === 'true');
-      } catch (e) {
+      } catch {
         setHasSeenOnboarding(false);
       }
     };
@@ -54,13 +54,8 @@ function RootStack() {
       <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="onboarding" />
-        <Stack.Screen name="home" />
-        { }
-        <Stack.Screen
-          name="index"
-          redirectTo={hasSeenOnboarding ? '/home' : '/onboarding'}
-          options={{ href: null }}
-        />
+        <Stack.Screen name="Home" />
+        <Stack.Screen name="index" options={{ href: null }} />
       </Stack>
     </>
   );

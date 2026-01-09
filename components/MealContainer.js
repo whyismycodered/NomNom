@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native'
+import { FlatList, useWindowDimensions } from 'react-native'
 import React from 'react'
 import BudgetVersionModal from './BudgetVersionModal'
 import MealCard from './MealCard'
@@ -133,6 +133,10 @@ const MealContainer = ({ budget, searchQuery }) => {
     const [loading, setLoading] = React.useState(false);
     const [errorText, setErrorText] = React.useState('');
 
+    // Determine number of columns based on screen width
+    const { width } = useWindowDimensions();
+    const cols = width < 360 ? 1 : width < 768 ? 2 : 3;
+
     const filteredMeals = meals.filter(meal =>
         meal.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -163,6 +167,7 @@ const MealContainer = ({ budget, searchQuery }) => {
             item={item}
             index={index}
             budget={budget}
+            cols={cols}
             onGenerate={() => handleGenerate(item)}
         />
     );
@@ -173,9 +178,10 @@ const MealContainer = ({ budget, searchQuery }) => {
                 data={filteredMeals}
                 renderItem={renderMeal}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={2}
+                numColumns={cols}
                 scrollEnabled={false}
-                contentContainerStyle={{ gap: 8 }}
+                contentContainerStyle={{ paddingHorizontal: 6, paddingBottom: 8 }}
+                columnWrapperStyle={cols > 1 ? { gap: 8 } : undefined}
             />
             <BudgetVersionModal
                 visible={modalVisible}
