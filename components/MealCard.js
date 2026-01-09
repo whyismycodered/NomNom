@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
 
-const MealCard = ({ item, index }) => {
+const MealCard = ({ item, index, budget, onGenerate }) => {
     const router = useRouter();
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const scaleAnim = useRef(new Animated.Value(0.8)).current;
@@ -23,8 +23,9 @@ const MealCard = ({ item, index }) => {
                 useNativeDriver: true,
             })
         ]).start();
-    }, []);
+    }, [fadeAnim, scaleAnim, index]);
 
+    const isOutOfBudget = item.price > budget;
     // Support both local require() and remote image URLs
     let imageSource = item.img;
     if (typeof item.img === 'string' && item.img.startsWith('http')) {
@@ -41,14 +42,46 @@ const MealCard = ({ item, index }) => {
         }}>
             <TouchableOpacity
                 activeOpacity={0.7}
-                onPress={() => router.push({ pathname: '/screens/MealView', params: { ...item } })}
+                onPress={() => {
+                    const ingredientsStr = Array.isArray(item.ingredients)
+                        ? item.ingredients.join('\n')
+                        : (item.ingredients || '');
+                    const proceduresStr = Array.isArray(item.procedures)
+                        ? item.procedures.join('\n')
+                        : (item.procedures || '');
+                    router.push({
+                        pathname: '/screens/MealView',
+                        params: {
+                            name: item.name,
+                            desc: item.desc,
+                            imgKey: item.imgKey,
+                            ingredients: ingredientsStr,
+                            procedures: proceduresStr,
+                        }
+                    })
+                }}
             >
-                <View style={{ alignSelf: 'center' }}>
+                <View style={{ alignSelf: 'center', opacity: isOutOfBudget ? 0.45 : 1 }}>
                     <Image source={imageSource} style={{ width: 166, height: 166, borderRadius: 8 }} />
                     <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, marginTop: 8, textAlign: 'left', letterSpacing: -0.4 }}>{item.name}</Text>
                     <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: '#666', marginVertical: 4, textAlign: 'left', maxWidth: 166, letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
                 </View>
             </TouchableOpacity>
+            {isOutOfBudget && (
+                <TouchableOpacity
+                    onPress={onGenerate}
+                    style={{
+                        marginTop: 8,
+                        backgroundColor: '#51225B',
+                        paddingVertical: 8,
+                        paddingHorizontal: 10,
+                        borderRadius: 10,
+                        alignSelf: 'center'
+                    }}
+                >
+                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 13, color: 'white' }}>Generate Budget Version</Text>
+                </TouchableOpacity>
+            )}
         </Animated.View>
     );
 };

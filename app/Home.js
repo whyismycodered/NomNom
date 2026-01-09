@@ -7,7 +7,7 @@ import MealContainer from "../components/MealContainer";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [budget, setBudget] = React.useState(500);
+  const [budget, setBudget] = React.useState(200);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

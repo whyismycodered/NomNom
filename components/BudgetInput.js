@@ -1,9 +1,8 @@
 import { View, Image, Text } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Slider from "@react-native-community/slider";
 
-const BudgetInput = () => {
-  const [budget, setBudget] = useState(50);
+const BudgetInput = ({ budget, setBudget }) => {
 
   return (
     <View
@@ -44,6 +43,7 @@ const BudgetInput = () => {
           </Text>
         </View>
       </View>
+      
       <Slider
         style={{ width: "100%", height: 20 }}
         minimumValue={100}
