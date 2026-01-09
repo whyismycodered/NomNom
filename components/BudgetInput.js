@@ -1,8 +1,10 @@
 import { View, Image, Text } from "react-native";
 import React from "react";
 import Slider from "@react-native-community/slider";
+import { useTheme } from "../theme/ThemeProvider";
 
 const BudgetInput = ({ budget, setBudget }) => {
+  const { theme } = useTheme();
 
   return (
     <View
@@ -10,8 +12,9 @@ const BudgetInput = ({ budget, setBudget }) => {
         paddingVertical: 12,
         paddingHorizontal: 12,
         borderWidth: 1,
-        borderColor: "#BA93CA",
+        borderColor: theme.border,
         borderRadius: 12,
+        backgroundColor: theme.card,
       }}
     >
       <View
@@ -26,7 +29,7 @@ const BudgetInput = ({ budget, setBudget }) => {
             style={{
               fontFamily: "Fredoka-SemiBold",
               fontSize: 18,
-              color: "#51225B",
+              color: theme.primary,
             }}
           >
             What&apos;s your budget?
@@ -35,7 +38,7 @@ const BudgetInput = ({ budget, setBudget }) => {
             style={{
               fontFamily: "Montserrat-SemiBold",
               fontSize: 20,
-              color: "#BA93CA",
+              color: theme.primarySoft,
               marginTop: 4,
             }}
           >
@@ -43,7 +46,7 @@ const BudgetInput = ({ budget, setBudget }) => {
           </Text>
         </View>
       </View>
-      
+
       <Slider
         style={{ width: "100%", height: 20 }}
         minimumValue={100}
@@ -51,9 +54,9 @@ const BudgetInput = ({ budget, setBudget }) => {
         step={5}
         value={budget}
         onValueChange={setBudget}
-        minimumTrackTintColor="#BA93CA"
-        maximumTrackTintColor="#E8D5EE"
-        thumbTintColor="#51225B"
+        minimumTrackTintColor={theme.primarySoft}
+        maximumTrackTintColor={theme.primarySoftAlt}
+        thumbTintColor={theme.primary}
       />
     </View>
   );

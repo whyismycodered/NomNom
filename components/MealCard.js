@@ -2,9 +2,11 @@ import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useTheme } from '../theme/ThemeProvider';
 
 const MealCard = ({ item, index, budget, onGenerate }) => {
     const router = useRouter();
+    const { theme } = useTheme();
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const scaleAnim = useRef(new Animated.Value(0.8)).current;
 
@@ -64,8 +66,8 @@ const MealCard = ({ item, index, budget, onGenerate }) => {
             >
                 <View style={{ alignSelf: 'center', opacity: isOutOfBudget ? 0.45 : 1 }}>
                     <Image source={imageSource} style={{ width: 166, height: 166, borderRadius: 8 }} />
-                    <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, marginTop: 8, textAlign: 'left', letterSpacing: -0.4 }}>{item.name}</Text>
-                    <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: '#666', marginVertical: 4, textAlign: 'left', maxWidth: 166, letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
+                    <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, marginTop: 8, textAlign: 'left', letterSpacing: -0.4, color: theme.text }}>{item.name}</Text>
+                    <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: theme.subtext, marginVertical: 4, textAlign: 'left', maxWidth: 166, letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
                 </View>
             </TouchableOpacity>
             {isOutOfBudget && (
@@ -73,7 +75,7 @@ const MealCard = ({ item, index, budget, onGenerate }) => {
                     onPress={onGenerate}
                     style={{
                         marginTop: 8,
-                        backgroundColor: '#51225B',
+                        backgroundColor: theme.primary,
                         paddingVertical: 8,
                         paddingHorizontal: 10,
                         borderRadius: 10,
@@ -81,7 +83,7 @@ const MealCard = ({ item, index, budget, onGenerate }) => {
                     }}
                 >
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, color: 'white', width: '80%'}}>Generate Budget Version</Text>
+                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, color: 'white', width: '80%' }}>Generate Budget Version</Text>
                         <MaterialCommunityIcons name="star-four-points" size={20} color="white" />
                     </View>
                 </TouchableOpacity>

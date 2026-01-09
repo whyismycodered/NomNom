@@ -2,10 +2,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useTheme } from "../../theme/ThemeProvider";
 
 export default function MealView() {
     const params = useLocalSearchParams();
     const router = useRouter();
+    const { theme } = useTheme();
     // params: { name, desc, imgKey?, img?, ingredients?, ... }
 
     // Map local image keys to static require paths
@@ -41,43 +43,43 @@ export default function MealView() {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
             <ScrollView>
-                <TouchableOpacity onPress={() => router.back()} style={{ position: 'absolute', top: 16, left: 10, zIndex: 1, backgroundColor: 'rgba(125, 38, 154, 0.5)', padding: 6, borderRadius: 20 }}>
+                <TouchableOpacity onPress={() => router.back()} style={{ position: 'absolute', top: 16, left: 10, zIndex: 1, backgroundColor: 'rgba(81, 34, 91, 0.5)', padding: 6, borderRadius: 20 }}>
                     <Ionicons name="chevron-back" size={24} color='white' />
                 </TouchableOpacity>
                 {imageSource && (
                     <Image source={imageSource} style={{ width: "100%", height: 250 }} />
                 )}
                 <View style={{ flex: 1, marginHorizontal: 16, marginTop: 12 }}>
-                    <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 24, marginBottom: 4 }}>{params.name}</Text>
-                    <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: 13, color: '#666', marginBottom: 16 }}>{params.desc}</Text>
+                    <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 24, marginBottom: 4, color: theme.text }}>{params.name}</Text>
+                    <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: 13, color: theme.subtext, marginBottom: 16 }}>{params.desc}</Text>
 
                 </View>
-                <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16 }}>Ingredients</Text>
-                <View style={{ paddingTop: 12, paddingHorizontal: 12,  backgroundColor: '#FFFFFF', borderColor: '#8B00C4', borderWidth: 1, borderRadius: 15, marginBottom: 16, flexDirection: 'column', marginHorizontal: 16 }}>
+                <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Ingredients</Text>
+                <View style={{ paddingTop: 12, paddingHorizontal: 14, backgroundColor: theme.card, borderColor: theme.primary, borderWidth: 1, borderRadius: 15, marginBottom: 16, flexDirection: 'column', marginHorizontal: 16 }}>
                     {ingredients.length > 0 ? ingredients.map((ing, idx) => (
                         <View key={idx} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 16, marginBottom: 8 }}>{ing}</Text>
+                            <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 16, marginBottom: 8, color: theme.text }}>{ing}</Text>
                         </View>
-                    )) : <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 15, marginBottom: 8 }}>No ingredients listed.</Text>}
+                    )) : <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 15, marginBottom: 8, color: theme.subtext }}>No ingredients listed.</Text>}
                 </View>
 
-                <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16 }}>Procedures</Text>
+                <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Procedures</Text>
                 {procedures.length > 0 ? procedures.map((step, idx) => (
-                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8, marginHorizontal: 22 }}>
-                            <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, color: '#8B00C4', marginRight: 12 }}>{idx + 1}.</Text>
-                            <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 16, flex: 1 }}>{step}</Text>
-                        </View>
-                    )) : <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 15, marginBottom: 8 }}>No procedures provided.</Text>}
+                    <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8, marginHorizontal: 22 }}>
+                        <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, color: theme.primary, marginRight: 12 }}>{idx + 1}.</Text>
+                        <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 16, flex: 1, color: theme.text }}>{step}</Text>
+                    </View>
+                )) : <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 15, marginBottom: 8, color: theme.subtext }}>No procedures provided.</Text>}
 
                 {/* Optionally add video/author if available in params */}
                 {params.videoThumbnail && (
                     <>
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 20, marginBottom: 8 }}>Watch a YouTube Tutorial</Text>
+                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 20, marginBottom: 8, color: theme.text }}>Watch a YouTube Tutorial</Text>
                         <Image source={{ uri: params.videoThumbnail }} style={{ width: "100%", height: 192, marginBottom: 4 }} />
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, marginBottom: 4 }}>{params.videoTitle || ''}</Text>
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 8, marginBottom: 16, color: '#888888' }}>{params.videoAuthor || ''}</Text>
+                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, marginBottom: 4, color: theme.text }}>{params.videoTitle || ''}</Text>
+                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 8, marginBottom: 16, color: theme.subtext }}>{params.videoAuthor || ''}</Text>
                     </>
                 )}
             </ScrollView>
