@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/Home.js", "app/_layout.js", "components/BudgetInput.js", "components/SearchBar.js"  ]
+, "app/Home.js", "app/_layout.js", "components/BudgetInput.js", "components/SearchBar.js", "app/onboarding.js"  ]
 }

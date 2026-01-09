@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ThemeProvider, useTheme } from '../theme/ThemeProvider';
 import { StatusBar } from 'expo-status-bar';
 
@@ -19,20 +20,48 @@ function RootStack() {
     'Montserrat-BoldItalic': require('../assets/fonts/Montserrat-BoldItalic.ttf'),
   });
   const { mode } = useTheme();
+  const [hasSeenOnboarding, setHasSeenOnboarding] = useState(null);
+
+  useEffect(() => {
+    const checkOnboarding = async () => {
+      try {
+        const value = await AsyncStorage.getItem('hasSeenOnboarding');
+        setHasSeenOnboarding(value === 'true');
+      } catch (e) {
+        setHasSeenOnboarding(false);
+      }
+    };
+    checkOnboarding();
+  }, []);
+
 
   useEffect(() => {
     if (fontError) throw fontError;
   }, [fontError]);
 
   useEffect(() => {
-    if (fontsLoaded) SplashScreen.hideAsync();
-  }, [fontsLoaded]);
+    if (fontsLoaded && hasSeenOnboarding !== null) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, hasSeenOnboarding]);
 
-  if (!fontsLoaded) return null;
+  if (!fontsLoaded || hasSeenOnboarding === null) {
+    return null;
+  }
+
   return (
     <>
       <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="onboarding" />
+        <Stack.Screen name="home" />
+        { }
+        <Stack.Screen
+          name="index"
+          redirectTo={hasSeenOnboarding ? '/home' : '/onboarding'}
+          options={{ href: null }}
+        />
+      </Stack>
     </>
   );
 }
@@ -42,5 +71,6 @@ export default function RootLayout() {
     <ThemeProvider>
       <RootStack />
     </ThemeProvider>
-  );
-}
+  ); 
+
+  }
