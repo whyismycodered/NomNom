@@ -26,7 +26,7 @@ const slides = [
     gradient: ['#FFFD9B', '#AEE3C6', '#9BD9CE'],
     title: "What's inside?",
     chatText:
-      'Great to see you!\nWhat do you feel like cooking?\nWhat’s your budget? e.g. ₱400',
+      'Great to see you!\nWhat do you feel like cooking?\nWhat’s your budget? e.g. ₱100',
     characterSmall: require('../assets/images/smile-nomnom.png'),
     showNextSkip: true,
   },
