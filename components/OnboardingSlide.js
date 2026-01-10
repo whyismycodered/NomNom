@@ -4,8 +4,13 @@ import {
   Text,
   Image,
   StyleSheet,
+  Dimensions,
+  PixelRatio,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+const scale = screenWidth / 375;
 
 export default function OnboardingSlide({ slide, width, height }) {
   return (
@@ -16,67 +21,139 @@ export default function OnboardingSlide({ slide, width, height }) {
       />
 
       <View style={styles.content}>
-        <Text style={styles.title}>{slide.title}</Text>
+        {slide.title === 'Get cooking with NomNom!' ? (
+          <>
+            {slide.character && (
+              <Image
+                source={slide.character}
+                style={[styles.characterLarge, { width: 240 * scale, height: 240 * scale, marginBottom: 0 }]}
+                resizeMode="contain"
+              />
+            )}
 
-        {slide.character && (
-          <Image
-            source={slide.character}
-            style={styles.characterLarge}
-            resizeMode="contain"
-          />
-        )}
+            <Text style={[
+              {
+                fontFamily: 'Montserrat-Bold',
+                textAlign: 'center',
+                color: '#333',
+                fontSize: 24 * scale,
+                marginTop: 5 * scale, 
+                marginBottom: 10 * scale,
+              }
+            ]}>
+              Get cooking with <Text style={{ color: '#8B00C2' }}>NomNom</Text>!
+            </Text>
 
-        {slide.characterSmall && (
-          <Image
-            source={slide.characterSmall}
-            style={styles.characterSmall}
-            resizeMode="contain"
-          />
-        )}
-
-        {slide.body && (
-          <Text style={styles.body}>{slide.body}</Text>
-        )}
-
-        {slide.chatText && (
-          <View style={styles.chatContainer}>
-            <View style={styles.chatBubble}>
-              <Text style={styles.chatText}>{slide.chatText}</Text>
-            </View>
-
-            <Image
-              source={require('../assets/images/phonemock.png')}
-              style={styles.phoneImage}
-              resizeMode="contain"
-            />
-          </View>
-        )}
-
-        {slide.ingredients && (
-          <View style={styles.ingredientCard}>
-            {slide.ingredients.map((ing, idx) => (
-              <Text key={idx} style={styles.ingredientText}>
-                {ing}
+            {slide.body && (
+              <Text style={[styles.body, { fontSize: 15 * scale, lineHeight: 22 * scale, marginHorizontal: 20 * scale, marginTop: 10 * scale }]}>
+                {slide.body}
               </Text>
-            ))}
-          </View>
-        )}
+            )}
+          </>
+        ) : (
+          <>
+            {slide.title === 'Struggling to pick meals on a budget?' && (
+              <Text style={{
+                position: 'absolute',
+                top: 20 * scale,
+                left: '50%',
+                transform: [{ translateX: -50 }],
+                fontSize: 100 * scale,
+                color: 'white',
+                fontFamily: 'Montserrat-Bold',
+                zIndex: 10,
+              }}>
+                
+              </Text>
+            )}
 
-        {slide.recipeImage && (
-          <View style={styles.recipeCard}>
-            <Image
-              source={slide.recipeImage}
-              style={styles.recipeImg}
-            />
-            <View style={styles.recipeOverlay}>
-              <Text style={styles.recipeBig}>
-                {slide.recipeTitle}
+            <Text style={[
+              {
+                fontFamily: 'Montserrat-Bold',
+                textAlign: 'center',
+                color: '#333',
+                fontSize: slide.title === 'NomNom provides you with:' ? 19 * scale : 25 * scale, 
+                marginTop: slide.title === 'Struggling to pick meals on a budget?' ? 40 * scale :
+                           slide.title === "What's inside?" ? -10 * scale :
+                           slide.title === 'NomNom provides you with:' ? -15 * scale : 5 * scale,
+                marginBottom: slide.title === 'Struggling to pick meals on a budget?' ? 15 * scale :
+                              slide.title === "What's inside?" ? 1 * scale :
+                              slide.title === 'NomNom provides you with:' ? 1 * scale : 5 * scale,
+              }
+            ]}>{slide.title}</Text>
+
+            {slide.character && (
+              <Image
+                source={slide.character}
+                style={[styles.characterLarge, { width: 240 * scale, height: 240 * scale }]}
+                resizeMode="contain"
+              />
+            )}
+
+            {slide.characterSmall && (
+              <Image
+                source={slide.characterSmall}
+                style={[styles.characterSmall, { width: 250 * scale, height: 380 * scale, right: 0, bottom: 30 * scale }]}
+                resizeMode="contain"
+              />
+            )}
+
+            {slide.body && (
+              <Text style={[styles.body, { fontSize: 15 * scale, lineHeight: 22 * scale, marginHorizontal: 20 * scale, marginTop: 10 * scale }]}>
+                {slide.body.startsWith('NomNom') ? (
+                  <>
+                    <Text style={{ fontFamily: 'Montserrat-Bold' }}>
+                      <Text style={{ color: '#8B00C2' }}>NomNom</Text> is here to help you!
+                    </Text>{'\n\n'}
+                    <Text>Discover affordable, delicious recipes tailored to your budget.</Text>
+                  </>
+                ) : (
+                  slide.body
+                )}
               </Text>
-              <Text style={styles.recipeSmall}>
-                {slide.recipeSubtitle}
-              </Text>
-            </View>
-          </View>
+            )}
+
+            {slide.chatText && (
+              <View style={styles.chatContainer}>
+                <View style={[styles.chatBubble, { padding: 16 * scale, width: '90%' }]}>
+                  <Text style={[styles.chatText, { fontSize: 15 * scale }]}>{slide.chatText}</Text>
+                </View>
+
+                <Image
+                  source={require('../assets/images/phonemock.png')}
+                  style={[styles.phoneImage, { width: 200 * scale, height: 360 * scale }]}
+                  resizeMode="contain"
+                />
+              </View>
+            )}
+
+            {slide.ingredients && (
+              <View style={[styles.ingredientCard, { padding: 16 * scale, marginTop: 12 * scale }]}>
+                {slide.ingredients.map((ing, idx) => (
+                  <Text key={idx} style={[styles.ingredientText, { fontSize: 11 * scale, marginVertical: 6 * scale }]}>
+                    {ing}
+                  </Text>
+                ))}
+              </View>
+            )}
+
+            {slide.recipeImage && (
+              <View style={[styles.recipeCard, { height: 190 * scale, marginTop: 14 * scale }]}>
+                <Image
+                  source={slide.recipeImage}
+                  style={styles.recipeImg}
+                />
+                <View style={[styles.recipeOverlay, { padding: 16 * scale }]}>
+                  <Text style={[styles.recipeBig, { fontSize: 20 * scale }]}>
+                    {slide.recipeTitle}
+                  </Text>
+                  <Text style={[styles.recipeSmall, { fontSize: 14 * scale, marginTop: 4 * scale }]}>
+                    {slide.recipeSubtitle}
+                  </Text>
+                </View>
+              </View>
+            )}
+          </>
         )}
       </View>
     </View>
@@ -89,84 +166,62 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingTop: 30,
-    paddingHorizontal: 24,
+    paddingTop: 65 * scale, // Restored for consistent top spacing
+    paddingHorizontal: 24 * scale,
     alignItems: 'center',
   },
   title: {
-    fontFamily: 'Montserrat-Bold',
-    fontSize: 24,
-    textAlign: 'center',
-    color: '#333',
-    marginBottom: 10,
+    // Removed shared title styles; now inline per slide
   },
   characterLarge: {
-    width: 240,
-    height: 240,
-    marginTop: 24,
-    marginBottom: 16,
+    marginTop: 20 * scale,
+    marginBottom: 5 * scale,
   },
   characterSmall: {
-    width: 250,
-    height: 380,
     position: 'absolute',
-    left: 110,
-    bottom: 30,
     zIndex: 20,
     elevation: 10,
     transform: [{ rotate: '1deg' }],
   },
   body: {
-    fontFamily: 'Montserrat-Medium',
-    fontSize: 15,
+    fontFamily: 'Montserrat-Medium', // Reverted to medium for the second part
     textAlign: 'center',
     color: '#555',
-    lineHeight: 22,
-    marginHorizontal: 20,
+    marginTop: 10 * scale,
   },
   chatContainer: {
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 10 * scale,
   },
   chatBubble: {
     backgroundColor: '#fff',
-    padding: 16,
     borderRadius: 18,
-    marginBottom: 12,
-    width: '90%',
+    marginBottom: 12 * scale,
     elevation: 6,
   },
   chatText: {
     fontFamily: 'Montserrat-Medium',
-    fontSize: 15,
     textAlign: 'center',
     color: '#333',
   },
   phoneImage: {
-    width: 200,
-    height: 360,
+   
   },
   ingredientCard: {
     backgroundColor: '#F3F2E9',
-    padding: 16,
     borderRadius: 14,
     width: '95%',
-    marginTop: 12,
     borderWidth: 1,
     borderColor: '#BA93CA',
   },
   ingredientText: {
     fontFamily: 'Montserrat-Regular',
-    fontSize: 13,
-    marginVertical: 6,
     color: '#444',
   },
   recipeCard: {
     width: '95%',
-    height: 190,
     borderRadius: 18,
     overflow: 'hidden',
-    marginTop: 14,
   },
   recipeImg: {
     width: '100%',
@@ -176,17 +231,13 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(139,0,196,0.55)',
     justifyContent: 'flex-end',
-    padding: 16,
   },
   recipeBig: {
     fontFamily: 'Montserrat-Bold',
     color: '#fff',
-    fontSize: 20,
   },
   recipeSmall: {
     fontFamily: 'Montserrat-Medium',
     color: '#fff',
-    fontSize: 14,
-    marginTop: 4,
   },
 });
