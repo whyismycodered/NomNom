@@ -1,50 +1,119 @@
-# Welcome to your Expo app 👋
+# NomNom - Budget Recipe Viewer
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A full-stack application consisting of a React Native mobile frontend and a Node.js/Express backend API for budget-conscious recipe management.
 
-## Get started
+## Project Structure
 
-1. Install dependencies
+```
+NomNom/
+├── frontend/          # React Native mobile application
+│   ├── app/          # App screens and navigation
+│   ├── assets/       # Images, fonts, and static assets
+│   ├── components/   # Reusable UI components
+│   ├── theme/        # Theme and styling configuration
+│   ├── package.json  # Frontend dependencies
+│   └── app.json      # Expo/React Native configuration
+├── backend/          # Node.js/Express API server
+│   ├── config/       # Database and server configuration
+│   ├── controllers/  # Business logic controllers
+│   ├── middleware/   # Custom Express middleware
+│   ├── models/       # Mongoose data models
+│   ├── routes/       # API route definitions
+│   ├── utils/        # Utility functions and helpers
+│   ├── server.js     # Server entry point
+│   └── package.json  # Backend dependencies
+└── .kiro/            # Kiro specifications and documentation
+    └── specs/
+        └── recipe-api-backend/
+            ├── requirements.md
+            ├── design.md
+            └── tasks.md
+```
 
+## Getting Started
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Set up environment variables:
    ```bash
-   npx expo start
+   cp .env.example .env
+   # Edit .env with your configuration
    ```
 
-In the output, you'll find options to open the app in a
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+The backend API will be available at:
+- Local: http://localhost:3000
+- Android Emulator: http://10.0.2.2:3000
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Frontend Setup
 
-## Get a fresh project
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-When you're ready, run:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run reset-project
-```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Features
 
-## Learn more
+### Backend API
+- RESTful API for recipe management
+- Budget-based ingredient optimization
+- MongoDB integration with Mongoose
+- CORS support for mobile clients
+- Comprehensive error handling and logging
 
-To learn more about developing your project with Expo, look at the following resources:
+### Frontend Mobile App
+- Browse recipes with detailed ingredient information
+- Budget optimization for ingredient quantities
+- Clean, intuitive mobile interface
+- Android emulator support for development
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Development
 
-## Join the community
+- **Backend**: Node.js/Express with MongoDB
+- **Frontend**: React Native with Expo
+- **Testing**: Jest with property-based testing support
+- **Architecture**: MVC pattern with clear separation of concerns
 
-Join our community of developers creating universal apps.
+## API Endpoints
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- `GET /health` - Health check endpoint
+- `GET /api/recipes` - Get all recipes
+- `GET /api/recipes/:id` - Get specific recipe
+- `POST /api/budget/optimize` - Optimize recipe for budget
+
+Additional endpoints are documented in the backend README.
+
+## Contributing
+
+1. Follow the MVC architecture pattern for backend development
+2. Use the established component structure for frontend development
+3. Write tests for new functionality
+4. Update documentation as needed
+
+## License
+
+MIT
