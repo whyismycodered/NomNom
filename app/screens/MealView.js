@@ -1,8 +1,11 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, Text, View, Image, TouchableOpacity, Linking } from "react-native";
+import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useTheme } from "../../theme/ThemeProvider";
+import IngredientsList from "../../components/IngredientsList";
+import ProceduresCard from "../../components/ProceduresCard";
+import VideoTutorial from "../../components/VideoTutorial";
 
 export default function MealView() {
     const params = useLocalSearchParams();
@@ -51,44 +54,44 @@ export default function MealView() {
                 {imageSource && (
                     <Image source={imageSource} style={{ width: "100%", height: 250 }} />
                 )}
-                <View style={{ flex: 1, marginHorizontal: 16, marginTop: 12 }}>
-                    <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 24, marginBottom: 4, color: theme.text }}>{params.name}</Text>
-                    <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: 13, color: theme.subtext, marginBottom: 16 }}>{params.desc}</Text>
+                <View
+                    style={{
+                        borderTopLeftRadius: 16,
+                        borderTopRightRadius: 16,
+                        backgroundColor: theme.card,
+                        marginTop: -20,
+                        paddingTop: 16,
+                        paddingBottom: 8,
+                        paddingHorizontal: 8,
+                        // subtle shadow to separate from image
+                        shadowColor: '#000',
+                        shadowOpacity: 0.08,
+                        shadowRadius: 6,
+                        shadowOffset: { width: 0, height: 3 },
+                        elevation: 3,
+                        overflow: 'hidden',
+                        width: '100%',
+                    }}
+                >
+                    <View style={{ flex: 1, paddingHorizontal: 16 }}>
+                        <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 24, marginBottom: 4, color: theme.primary }}>{params.name}</Text>
+                        <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: 13, color: theme.subtext, marginBottom: 16 }}>{params.desc}</Text>
 
-                </View>
-                <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Ingredients</Text>
-                <View style={{ paddingTop: 12, paddingHorizontal: 14, backgroundColor: theme.card, borderColor: theme.primary, borderWidth: 1, borderRadius: 15, marginBottom: 16, flexDirection: 'column', marginHorizontal: 16 }}>
-                    {ingredients.length > 0 ? ingredients.map((ing, idx) => (
-                        <View key={idx} style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 16, marginBottom: 8, color: theme.text }}>{ing}</Text>
-                        </View>
-                    )) : <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 15, marginBottom: 8, color: theme.subtext }}>No ingredients listed.</Text>}
-                </View>
-
-                <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Procedures</Text>
-                {procedures.length > 0 ? procedures.map((step, idx) => (
-                    <View key={idx} style={{ flexDirection: 'row', alignItems: 'flex-start', marginBottom: 8, marginHorizontal: 22 }}>
-                        <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, color: theme.primary, marginRight: 12 }}>Step {idx + 1}:</Text>
-                        <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 16, flex: 1, color: theme.text }}>{step}</Text>
                     </View>
-                )) : <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 15, color: theme.subtext }}>No procedures provided.</Text>}
+                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Ingredients{" "}<Text style={{ color: theme.primary }}>({ingredients.length})</Text></Text>
+                    <IngredientsList ingredients={ingredients} />
 
-                {/* Optionally add video/author if available in params */}
-                {params.videoThumbnail && (
-                    <>
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 20, marginVertical: 8, color: theme.text, marginHorizontal: 16 }}>Watch a YouTube Tutorial</Text>
-                        <TouchableOpacity onPress={() => {
-                            // Open the video URL if provided
-                            if (params.videoUrl) {
-                                Linking.openURL(params.videoUrl);
-                            }
-                        }}>
-                            <Image source={{ uri: params.videoThumbnail }} style={{ width: "90%", height: 192, marginBottom: 4, marginHorizontal: 16, borderRadius: 8 }} />
-                        </TouchableOpacity>
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 15, marginBottom: 2, color: theme.text, marginHorizontal: 16 }}>{params.videoTitle || ''}</Text>
-                        <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, marginBottom: 16, color: theme.subtext, marginHorizontal: 16 }}>{params.videoAuthor || ''}</Text>
-                    </>
-                )}
+                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Procedures</Text>
+                    <ProceduresCard procedures={procedures} />
+
+                    {/* Video tutorial section */}
+                    <VideoTutorial
+                        thumbnail={params.videoThumbnail}
+                        url={params.videoUrl}
+                        title={params.videoTitle}
+                        author={params.videoAuthor}
+                    />
+                </View>
             </ScrollView>
         </SafeAreaView>
     );

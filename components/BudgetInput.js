@@ -12,7 +12,7 @@ const BudgetInput = ({ budget, setBudget }) => {
         paddingVertical: 12,
         paddingHorizontal: 12,
         borderWidth: 1,
-        borderColor: theme.border,
+        borderColor: theme.primary,
         borderRadius: 12,
         backgroundColor: theme.card,
       }}

@@ -22,12 +22,13 @@ const MealContainer = ({ budget, searchQuery }) => {
             videoTitle: 'Chicken Afritada Tutorial',
             videoAuthor: 'YouTube',
             ingredients: [
-                "Chicken",
-                "Potatoes",
-                "Carrots",
-                "Bell peppers",
-                "Tomato sauce",
-                "Garlic & onion",
+                "1 Whole Chicken",
+                "3 Potatoes",
+                "2 Carrots",
+                "2 Bell peppers",
+                "1 Tomato sauce",
+                "2 Onion",
+                "1 Garlic",
                 "Salt & pepper",
             ],
             procedures: [
@@ -185,8 +186,11 @@ const MealContainer = ({ budget, searchQuery }) => {
                 keyExtractor={(item) => item.id.toString()}
                 numColumns={cols}
                 scrollEnabled={false}
-                contentContainerStyle={{ paddingHorizontal: 6, paddingBottom: 8 }}
-                columnWrapperStyle={cols > 1 ? { gap: 8 } : undefined}
+                contentContainerStyle={{
+                    paddingHorizontal: 2,
+                    paddingBottom: 4,
+                }}
+                columnWrapperStyle={cols > 1 ? { justifyContent: 'flex-start', gap: 8 } : undefined}
             />
             <BudgetVersionModal
                 visible={modalVisible}
