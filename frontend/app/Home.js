@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar";
 import BudgetInput from "../components/BudgetInput";
 import MealContainer from "../components/MealContainer";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useTheme } from "../theme/ThemeProvider";
+import { useTheme } from "../theme/ThemeProvider"; // Updated import path
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = React.useState("");

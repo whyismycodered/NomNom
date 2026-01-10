@@ -11,7 +11,13 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "app/Home.js", "app/_layout.js", "components/BudgetInput.js", "components/SearchBar.js", "app/onboarding.js"  ]
+    "frontend/.expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "frontend/app/Home.js",
+    "frontend/app/_layout.js",
+    "frontend/components/BudgetInput.js",
+    "frontend/components/SearchBar.js",
+    "frontend/app/onboarding.js",
+    ".expo/types/**/*.ts"
+  ]
 }
