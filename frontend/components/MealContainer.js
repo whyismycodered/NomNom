@@ -1,8 +1,5 @@
 import { FlatList, useWindowDimensions } from 'react-native'
-import React from 'react'
-import BudgetVersionModal from './BudgetVersionModal'
 import MealCard from './MealCard'
-
 
 // MealCard moved to components/MealCard.js
 
@@ -134,11 +131,6 @@ const MealContainer = ({ budget, searchQuery }) => {
     },
   ];
 
-  const [modalVisible, setModalVisible] = React.useState(false);
-  const [modalContent, setModalContent] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
-  const [errorText, setErrorText] = React.useState('');
-
   // Determine number of columns based on screen width
   const { width } = useWindowDimensions();
   const cols = width < 360 ? 1 : width < 768 ? 2 : 3;
@@ -147,34 +139,12 @@ const MealContainer = ({ budget, searchQuery }) => {
     meal.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleGenerate = async (item) => {
-    setModalVisible(true);
-    setLoading(true);
-    setErrorText('');
-    try {
-      const text = await generateBudgetVersion({
-        name: item.name,
-        desc: item.desc,
-        price: item.price,
-        budget,
-        ingredients: item.ingredients || [],
-        procedures: item.procedures || [],
-      });
-      setModalContent(text);
-    } catch (err) {
-      setErrorText(err?.message || 'Failed to generate.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const renderMeal = ({ item, index }) => (
     <MealCard
       item={item}
       index={index}
       budget={budget}
       cols={cols}
-      onGenerate={() => handleGenerate(item)}
     />
   );
 
@@ -191,13 +161,6 @@ const MealContainer = ({ budget, searchQuery }) => {
           paddingBottom: 4,
         }}
         columnWrapperStyle={cols > 1 ? { justifyContent: 'flex-start', gap: 8 } : undefined}
-      />
-      <BudgetVersionModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        loading={loading}
-        errorText={errorText}
-        content={modalContent}
       />
     </>
   )

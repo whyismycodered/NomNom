@@ -1,7 +1,6 @@
 import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useTheme } from '../theme/ThemeProvider';
 
 const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
@@ -11,6 +10,7 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
     const scaleAnim = useRef(new Animated.Value(0.8)).current;
 
     const isOutOfBudget = item.price > budget;
+    const dimAnim = useRef(new Animated.Value(isOutOfBudget ? 1 : 0)).current;
 
     // Initial mount animation
     useEffect(() => {
@@ -31,26 +31,15 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
         ]).start();
     }, [fadeAnim, scaleAnim, index]);
 
-    // Animate when budget status changes
-    const prevIsOutOfBudget = useRef(isOutOfBudget);
+    // Animate grey-out whenever budget changes
     useEffect(() => {
-        if (prevIsOutOfBudget.current !== isOutOfBudget) {
-            // Animate scale and color when budget status changes
-            Animated.sequence([
-                Animated.timing(scaleAnim, {
-                    toValue: 1.02,
-                    duration: 210,
-                    useNativeDriver: true,
-                }),
-                Animated.timing(scaleAnim, {
-                    toValue: 1,
-                    duration: 210,
-                    useNativeDriver: true,
-                })
-            ]).start();
-            prevIsOutOfBudget.current = isOutOfBudget;
-        }
-    }, [isOutOfBudget, scaleAnim]);
+        Animated.timing(dimAnim, {
+            toValue: isOutOfBudget ? 1 : 0,
+            duration: 250,
+            useNativeDriver: true,
+        }).start();
+    }, [isOutOfBudget, budget, dimAnim]);
+
     // Support both local require() and remote image URLs
     let imageSource = item.img;
     if (typeof item.img === 'string' && item.img.startsWith('http')) {
@@ -105,7 +94,12 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                         })
                     }}
                 >
-                    <View style={{ width: '100%', opacity: isOutOfBudget ? 0.45 : 1, padding: 0, margin: 0 }}>
+                    <Animated.View style={{
+                        width: '100%',
+                        opacity: dimAnim.interpolate({ inputRange: [0, 1], outputRange: [1, 0.45] }),
+                        padding: 0,
+                        margin: 0
+                    }}>
                         <Image
                             source={imageSource}
                             resizeMode="cover"
@@ -124,28 +118,8 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                             <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, textAlign: 'left', letterSpacing: -0.4, color: theme.text }}>{item.name}</Text>
                             <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: theme.subtext, marginTop: 4, textAlign: 'left', letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
                         </View>
-                    </View>
+                    </Animated.View>
                 </TouchableOpacity>
-                {isOutOfBudget && (
-                    <TouchableOpacity
-                        onPress={onGenerate}
-                        style={{
-                            marginTop: 4,
-                            marginHorizontal: 10,
-                            marginBottom: 10,
-                            backgroundColor: theme.primary,
-                            paddingVertical: 8,
-                            paddingHorizontal: 10,
-                            borderRadius: 10,
-                            alignSelf: 'stretch'
-                        }}
-                    >
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 12, color: 'white', width: '80%' }}>Generate Budget Version</Text>
-                            <MaterialCommunityIcons name="star-four-points" size={18} color="white" />
-                        </View>
-                    </TouchableOpacity>
-                )}
             </View>
         </Animated.View>
     );

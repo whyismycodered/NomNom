@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "../components/SearchBar";
-import BudgetInput from "../components/BudgetInput";
+import BudgetInput from "../components/BudgetServingInput";
 import MealContainer from "../components/MealContainer";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useTheme } from "../theme/ThemeProvider"; // Updated import path
