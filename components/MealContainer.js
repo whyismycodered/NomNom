@@ -16,6 +16,11 @@ const MealContainer = ({ budget, searchQuery }) => {
             img: require("../assets/images/chicken-afritada.png"),
             imgKey: 'chicken-afritada',
             price: 200,
+            // Sample video metadata for display in MealView
+            videoUrl: 'https://www.youtube.com/watch?v=bYMV36YRC2U',
+            videoThumbnail: 'https://img.youtube.com/vi/bYMV36YRC2U/hqdefault.jpg',
+            videoTitle: 'Chicken Afritada Tutorial',
+            videoAuthor: 'YouTube',
             ingredients: [
                 "Chicken",
                 "Potatoes",

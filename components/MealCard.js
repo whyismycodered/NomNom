@@ -59,6 +59,11 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                             imgKey: item.imgKey,
                             ingredients: ingredientsStr,
                             procedures: proceduresStr,
+                            // Pass optional video metadata for display
+                            videoUrl: item.videoUrl,
+                            videoThumbnail: item.videoThumbnail,
+                            videoTitle: item.videoTitle,
+                            videoAuthor: item.videoAuthor,
                         }
                     })
                 }}
