@@ -172,20 +172,73 @@ export class RecipeTransformer {
    */
   static generateImageKey(recipeName) {
     if (!recipeName || typeof recipeName !== 'string') {
-      return 'default-recipe';
+      return 'chicken-afritada';
     }
 
-    // Map recipe names to existing image keys
+    // Map recipe names to existing image keys - COMPLETE MAPPING
     const nameMap = {
+      // Exact matches from backend data
+      'salmon sinigang': 'Sinigang-salmon',
+      'filipino pancit bihon': 'Pancit-Bihon',
+      'lumpia shanghai': 'Shanghai',
+      'filipino chicken adobo': 'Chicken-adobo',
+      'sinangag (filipino garlic fried rice)': 'Sinangag',
+      'ginataan na sugpo (prawns with coconut milk)': 'Ginataan-sugpo',
+      'mechado (filipino beef stew)': 'Mechado',
+      'filipino chicken inasal': 'Chicken-inasal',
+      'bola-bola (filipino meatballs)': 'Bola-Bola',
+      'filipino spaghetti': 'Spaghetti',
+      'filipino beef short ribs adobo': 'Beef-Short-Ribs',
+      'lumpiang sariwa (fresh lumpia)': 'Lumpiang_sariwa',
+      'sinigang (pork ribs)': 'sinigang-pork-ribs',
+      'picadillo': 'Picadillo',
+      'bistek (beef marinated with calamansi, soy and onions)': 'Bistek',
+      
+      // Alternative name variations
+      'chicken adobo': 'Chicken-adobo',
+      'adobo': 'Adobo',
+      'pancit bihon': 'Pancit-Bihon',
+      'pancit': 'Pancit-Bihon',
+      'lumpia': 'Shanghai',
+      'shanghai': 'Shanghai',
+      'lumpiang shanghai': 'Shanghai',
+      'sinangag': 'Sinangag',
+      'fried rice': 'Sinangag',
+      'garlic fried rice': 'Sinangag',
+      'sinigang': 'Sinigang-salmon',
+      'salmon sinigang': 'Sinigang-salmon',
+      'pork sinigang': 'sinigang-pork-ribs',
+      'sinigang pork ribs': 'sinigang-pork-ribs',
+      'prawns with coconut milk': 'Ginataan-sugpo',
+      'ginataan': 'Ginataan-sugpo',
+      'ginataan na sugpo': 'Ginataan-sugpo',
+      'mechado': 'Mechado',
+      'beef stew': 'Mechado',
+      'chicken inasal': 'Chicken-inasal',
+      'inasal': 'Chicken-inasal',
+      'bola bola': 'Bola-Bola',
+      'meatballs': 'Bola-Bola',
+      'filipino meatballs': 'Bola-Bola',
+      'spaghetti': 'Spaghetti',
+      'filipino spaghetti': 'Spaghetti',
+      'beef short ribs': 'Beef-Short-Ribs',
+      'short ribs adobo': 'Beef-Short-Ribs',
+      'beef short ribs adobo': 'Beef-Short-Ribs',
+      'lumpiang sariwa': 'Lumpiang_sariwa',
+      'fresh lumpia': 'Lumpiang_sariwa',
+      'bistek': 'Bistek',
+      'beef steak': 'Bistek',
+      'filipino beef steak': 'Bistek',
+      
+      // Legacy mappings for backward compatibility
       'chicken afritada': 'chicken-afritada',
       'fried bangus': 'fried-bangus',
       'pork adobo': 'pork-adobo',
-      'beef mechado': 'beef-mechado',
-      'lumpiang shanghai': 'lumpiang-shanghai'
+      'beef mechado': 'beef-mechado'
     };
 
     const key = recipeName.toLowerCase().trim();
-    return nameMap[key] || 'chicken-afritada'; // Default to chicken-afritada instead of unknown
+    return nameMap[key] || 'chicken-afritada'; // Default to chicken-afritada
   }
 
   /**
@@ -207,6 +260,25 @@ export class RecipeTransformer {
     }
 
     const imageMap = {
+      // New recipe images
+      'Sinigang-salmon': require('../assets/images/Sinigang-salmon.png'),
+      'Pancit-Bihon': require('../assets/images/Pancit-Bihon.png'),
+      'Shanghai': require('../assets/images/Shanghai.png'),
+      'Chicken-adobo': require('../assets/images/Chicken-adobo.png'),
+      'Adobo': require('../assets/images/Adobo.png'),
+      'Sinangag': require('../assets/images/Sinangag.png'),
+      'Ginataan-sugpo': require('../assets/images/Ginataan-sugpo.png'),
+      'Mechado': require('../assets/images/Mechado.png'),
+      'Bistek': require('../assets/images/Bistek.png'),
+      'Beef-Short-Ribs': require('../assets/images/Beef-Short-Ribs.png'),
+      'Bola-Bola': require('../assets/images/Bola-Bola.png'),
+      'Chicken-inasal': require('../assets/images/Chicken-inasal.png'),
+      'Lumpiang_sariwa': require('../assets/images/Lumpiang_sariwa.png'),
+      'Picadillo': require('../assets/images/Picadillo.png'),
+      'Spaghetti': require('../assets/images/Spaghetti.png'),
+      'sinigang-pork-ribs': require('../assets/images/sinigang-pork-ribs.png'),
+      
+      // Legacy images
       'chicken-afritada': require('../assets/images/chicken-afritada.png'),
       'fried-bangus': require('../assets/images/fried-bangus.png'),
       'pork-adobo': require('../assets/images/pork-adobo.png'),

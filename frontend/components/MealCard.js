@@ -88,6 +88,9 @@ const MealCard = ({ item, index, budget, servings = 4, cols = 2, isOffline = fal
                                 servings: servings,
                                 ingredients: ingredientsStr,
                                 procedures: proceduresStr,
+                                // Pass image information for MealView
+                                hasRemoteImage: typeof item.img === 'string' && item.img.startsWith('http') ? 'true' : 'false',
+                                remoteImageUrl: typeof item.img === 'string' && item.img.startsWith('http') ? item.img : '',
                                 // Pass optional video metadata for display
                                 videoUrl: item.videoUrl,
                                 videoThumbnail: item.videoThumbnail,

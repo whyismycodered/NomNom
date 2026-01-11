@@ -26,6 +26,8 @@ export default function MealView() {
     const recipeName = params.name;
     const recipeDesc = params.desc;
     const imgKey = params.imgKey;
+    const hasRemoteImage = params.hasRemoteImage === 'true';
+    const remoteImageUrl = params.remoteImageUrl;
 
     useEffect(() => {
         if (recipeId) {
@@ -53,20 +55,27 @@ export default function MealView() {
         fetchRecipeDetails();
     };
 
-    // Map local image keys to static require paths
-    const imageMap = {
-        'chicken-afritada': require('../../assets/images/chicken-afritada.png'),
-        'fried-bangus': require('../../assets/images/fried-bangus.png'),
-        'pork-adobo': require('../../assets/images/pork-adobo.png'),
-        'beef-mechado': require('../../assets/images/beef-mechado.png'),
-        'lumpiang-shanghai': require('../../assets/images/lumpiang-shanghai.png'),
-    };
-
+    // Get image source using RecipeTransformer for consistency
     let imageSource;
-    if (typeof imgKey === 'string' && imageMap[imgKey]) {
-        imageSource = imageMap[imgKey];
-    } else if (recipeDetails?.img && recipeDetails.img.startsWith('http')) {
-        imageSource = { uri: recipeDetails.img };
+    if (recipeDetails?.img) {
+        // Use the image from transformed recipe data
+        imageSource = recipeDetails.img;
+    } else if (hasRemoteImage && remoteImageUrl) {
+        // Use remote image URL passed from MealCard
+        imageSource = { uri: remoteImageUrl };
+    } else if (recipeName) {
+        // Generate image from recipe name using RecipeTransformer
+        imageSource = RecipeTransformer.getImageSource(recipeName);
+    } else if (imgKey) {
+        // Legacy fallback using imgKey parameter
+        const legacyImageMap = {
+            'chicken-afritada': require('../../assets/images/chicken-afritada.png'),
+            'fried-bangus': require('../../assets/images/fried-bangus.png'),
+            'pork-adobo': require('../../assets/images/pork-adobo.png'),
+            'beef-mechado': require('../../assets/images/beef-mechado.png'),
+            'lumpiang-shanghai': require('../../assets/images/lumpiang-shanghai.png'),
+        };
+        imageSource = legacyImageMap[imgKey];
     }
 
     // Use transformed recipe data if available, otherwise fallback to params
@@ -79,8 +88,29 @@ export default function MealView() {
                 <TouchableOpacity onPress={() => router.back()} style={{ position: 'absolute', top: 16, left: 10, zIndex: 1, backgroundColor: 'rgba(81, 34, 91, 0.5)', padding: 6, borderRadius: 20 }}>
                     <Ionicons name="chevron-back" size={24} color='white' />
                 </TouchableOpacity>
+                
+                {/* Always show image if available */}
                 {imageSource && (
-                    <Image source={imageSource} style={{ width: "100%", height: 250 }} />
+                    <Image 
+                        source={imageSource} 
+                        style={{ 
+                            width: "100%", 
+                            height: 250,
+                            resizeMode: 'cover'
+                        }} 
+                    />
+                )}
+                
+                {/* Fallback image if no specific image is available */}
+                {!imageSource && (
+                    <Image 
+                        source={require('../../assets/images/chicken-afritada.png')} 
+                        style={{ 
+                            width: "100%", 
+                            height: 250,
+                            resizeMode: 'cover'
+                        }} 
+                    />
                 )}
                 <View
                     style={{
