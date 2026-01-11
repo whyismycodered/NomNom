@@ -5,7 +5,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useTheme } from "../../theme/ThemeProvider";
 import IngredientsList from "../../components/IngredientsList";
 import ProceduresCard from "../../components/ProceduresCard";
-import VideoTutorial from "../../components/VideoTutorial";
+import { Badge, DifficultyBadge } from "../../components/Badge";
 
 export default function MealView() {
     const params = useLocalSearchParams();
@@ -45,6 +45,20 @@ export default function MealView() {
         procedures = params.procedures.split('\n').filter(Boolean);
     }
 
+    // Difficulty badge handled by component
+
+    // Prep/Cook time badges
+    const prepTimeVal = (typeof params.prepTime === 'number' || typeof params.prepTime === 'string') ? params.prepTime : null;
+    const cookTimeVal = (typeof params.cookTime === 'number' || typeof params.cookTime === 'string') ? params.cookTime : null;
+    const formatMinutes = (v) => {
+        if (v == null) return null;
+        if (typeof v === 'number') return `${v} min`;
+        const s = String(v).trim();
+        return /min\b/i.test(s) ? s : `${s} min`;
+    };
+    const prepLabel = formatMinutes(prepTimeVal);
+    const cookLabel = formatMinutes(cookTimeVal);
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
             <ScrollView>
@@ -75,22 +89,29 @@ export default function MealView() {
                 >
                     <View style={{ flex: 1, paddingHorizontal: 16 }}>
                         <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 24, marginBottom: 4, color: theme.primary }}>{params.name}</Text>
+                        {/* Badge row under name */}
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 8 }}>
+                            <DifficultyBadge level={params.difficulty} style={{ marginRight: 8, marginBottom: 8 }} />
+                            {prepLabel && (
+                                <Badge label={`Prep: ${prepLabel}`} bgColor="#ede9fe" textColor="#5b21b6" style={{ marginRight: 8, marginBottom: 8 }} />
+                            )}
+                            {cookLabel && (
+                                <Badge label={`Cook: ${cookLabel}`} bgColor="#e0f2fe" textColor="#075985" style={{ marginRight: 8, marginBottom: 8 }} />
+                            )}
+                        </View>
                         <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: 13, color: theme.subtext, marginBottom: 16 }}>{params.desc}</Text>
 
                     </View>
-                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Ingredients{" "}<Text style={{ color: theme.primary }}>({ingredients.length})</Text></Text>
+                    <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 4, marginHorizontal: 16, color: theme.text }}>Ingredients{" "}<Text style={{ color: theme.primary }}>({ingredients.length})</Text></Text>
+                    {params.servings != null && (
+                        <Text style={{ fontFamily: 'Montserrat-Medium', fontSize: 12, color: theme.subtext, marginBottom: 8, marginHorizontal: 16 }}>
+                            Serving for {params.servings}
+                        </Text>
+                    )}
                     <IngredientsList ingredients={ingredients} />
 
                     <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, marginBottom: 8, marginHorizontal: 16, color: theme.text }}>Procedures</Text>
                     <ProceduresCard procedures={procedures} />
-
-                    {/* Video tutorial section */}
-                    <VideoTutorial
-                        thumbnail={params.videoThumbnail}
-                        url={params.videoUrl}
-                        title={params.videoTitle}
-                        author={params.videoAuthor}
-                    />
                 </View>
             </ScrollView>
         </SafeAreaView>

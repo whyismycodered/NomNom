@@ -10,6 +10,7 @@ import { useTheme } from "../theme/ThemeProvider"; // Updated import path
 export default function Home() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [budget, setBudget] = React.useState(200);
+  const [servings, setServings] = React.useState(1);
   const { theme, mode, toggle } = useTheme();
 
   return (
@@ -25,6 +26,8 @@ export default function Home() {
         <BudgetInput
           budget={budget}
           setBudget={setBudget}
+          servings={servings}
+          setServings={setServings}
         />
         <View>
           <Text style={{ fontFamily: 'Montserrat-SemiBold', fontSize: 18, color: theme.text }}>
@@ -35,7 +38,7 @@ export default function Home() {
             Explore various food options tailored to your budget!
           </Text>
         </View>
-        <MealContainer budget={budget} searchQuery={searchQuery} />
+        <MealContainer budget={budget} searchQuery={searchQuery} servings={servings} />
       </ScrollView>
     </SafeAreaView>
   );

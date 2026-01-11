@@ -2,8 +2,9 @@ import { View, Text, Image, TouchableOpacity, Animated } from 'react-native';
 import { useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import { useTheme } from '../theme/ThemeProvider';
+import { DifficultyBadge } from './Badge';
 
-const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
+const MealCard = ({ item, index, budget, servings, onGenerate, cols = 2 }) => {
     const router = useRouter();
     const { theme } = useTheme();
     const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -46,6 +47,7 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
         imageSource = { uri: item.img };
     }
 
+
     return (
         <Animated.View style={{
             width: `${100 / cols}%`,
@@ -85,6 +87,11 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                                 imgKey: item.imgKey,
                                 ingredients: ingredientsStr,
                                 procedures: proceduresStr,
+                                servings: servings,
+                                // Additional metadata for detail view badges
+                                difficulty: item.difficulty,
+                                cookTime: item.cookTime,
+                                prepTime: item.prepTime,
                                 // Pass optional video metadata for display
                                 videoUrl: item.videoUrl,
                                 videoThumbnail: item.videoThumbnail,
@@ -117,6 +124,7 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                         <View style={{ padding: 10, paddingTop: 10, margin: 0 }}>
                             <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, textAlign: 'left', letterSpacing: -0.4, color: theme.text }}>{item.name}</Text>
                             <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: theme.subtext, marginTop: 4, textAlign: 'left', letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
+                            <DifficultyBadge level={item.difficulty} style={{ marginTop: 8, alignSelf: 'flex-start' }} />
                         </View>
                     </Animated.View>
                 </TouchableOpacity>

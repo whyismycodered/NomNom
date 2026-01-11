@@ -3,7 +3,7 @@ import MealCard from './MealCard'
 
 // MealCard moved to components/MealCard.js
 
-const MealContainer = ({ budget, searchQuery }) => {
+const MealContainer = ({ budget, searchQuery, servings }) => {
   // Inline sample data
   const meals = [
     {
@@ -13,11 +13,9 @@ const MealContainer = ({ budget, searchQuery }) => {
       img: require("../assets/images/chicken-afritada.png"),
       imgKey: 'chicken-afritada',
       price: 200,
-      // Sample video metadata for display in MealView
-      videoUrl: 'https://www.youtube.com/watch?v=bYMV36YRC2U',
-      videoThumbnail: 'https://img.youtube.com/vi/bYMV36YRC2U/hqdefault.jpg',
-      videoTitle: 'Chicken Afritada Tutorial',
-      videoAuthor: 'YouTube',
+      difficulty: "Medium",
+      prepTime: 15,
+      cookTime: 45,
       ingredients: [
         "1 Whole Chicken",
         "3 Potatoes",
@@ -43,6 +41,9 @@ const MealContainer = ({ budget, searchQuery }) => {
       img: require("../assets/images/fried-bangus.png"),
       imgKey: 'fried-bangus',
       price: 280,
+      difficulty: "Easy",
+      prepTime: 10,
+      cookTime: 15,
       ingredients: [
         "Bangus (milkfish)",
         "Salt & pepper",
@@ -65,6 +66,9 @@ const MealContainer = ({ budget, searchQuery }) => {
       img: require("../assets/images/pork-adobo.png"),
       imgKey: 'pork-adobo',
       price: 250,
+      difficulty: "Medium",
+      prepTime: 15,
+      cookTime: 60,
       ingredients: [
         "Pork",
         "Soy sauce",
@@ -89,6 +93,9 @@ const MealContainer = ({ budget, searchQuery }) => {
       img: require("../assets/images/beef-mechado.png"),
       imgKey: 'beef-mechado',
       price: 350,
+      difficulty: "Hard",
+      prepTime: 20,
+      cookTime: 90,
       ingredients: [
         "Beef",
         "Tomato sauce",
@@ -103,30 +110,6 @@ const MealContainer = ({ budget, searchQuery }) => {
         "Return beef; add potatoes and carrots.",
         "Simmer until beef is tender and sauce thickens.",
         "Season to taste and serve.",
-      ],
-    },
-    {
-      id: 5,
-      name: "Lumpiang Shanghai",
-      desc: "Crispy fried spring rolls filled with ground pork and vegetables.",
-      img: require("../assets/images/lumpiang-shanghai.png"),
-      imgKey: 'lumpiang-shanghai',
-      price: 310,
-      ingredients: [
-        "Ground pork",
-        "Carrots",
-        "Onions",
-        "Garlic",
-        "Spring roll wrappers",
-        "Salt & pepper",
-        "Sweet chili sauce",
-      ],
-      procedures: [
-        "Mix ground pork with carrots, onions, garlic, and seasoning.",
-        "Wrap mixture in spring roll wrappers.",
-        "Seal edges and fry until golden brown.",
-        "Drain excess oil and serve with sweet chili sauce.",
-        "Enjoy while hot and crispy.",
       ],
     },
   ];
@@ -144,6 +127,7 @@ const MealContainer = ({ budget, searchQuery }) => {
       item={item}
       index={index}
       budget={budget}
+      servings={servings}
       cols={cols}
     />
   );
