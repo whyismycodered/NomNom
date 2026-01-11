@@ -1,159 +1,318 @@
-import { FlatList, useWindowDimensions } from 'react-native'
-import MealCard from './MealCard'
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { FlatList, useWindowDimensions, Text, View, RefreshControl } from 'react-native';
+import MealCard from './MealCard';
+import LoadingSkeleton from './LoadingSkeleton';
+import ErrorBoundary from './ErrorBoundary';
+import { RecipeTransformer } from '../utils/recipeTransformer';
+import { CacheService } from '../services/cacheService';
+import dataSyncService from '../services/dataSyncService';
+import { useTheme } from '../theme/ThemeProvider';
 
-// MealCard moved to components/MealCard.js
+const MealContainer = ({ budget, searchQuery, servings = 4 }) => {
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
+  const { theme } = useTheme();
+  const syncListenerRef = useRef(null);
+  const backendListenerRef = useRef(null);
 
-const MealContainer = ({ budget, searchQuery }) => {
-  // Inline sample data
-  const meals = [
-    {
-      id: 1,
-      name: "Chicken Afritada",
-      desc: "A classic Filipino chicken stew with potatoes, carrots, and bell peppers in a tomato-based sauce.",
-      img: require("../assets/images/chicken-afritada.png"),
-      imgKey: 'chicken-afritada',
-      price: 200,
-      // Sample video metadata for display in MealView
-      videoUrl: 'https://www.youtube.com/watch?v=bYMV36YRC2U',
-      videoThumbnail: 'https://img.youtube.com/vi/bYMV36YRC2U/hqdefault.jpg',
-      videoTitle: 'Chicken Afritada Tutorial',
-      videoAuthor: 'YouTube',
-      ingredients: [
-        "1 Whole Chicken",
-        "3 Potatoes",
-        "2 Carrots",
-        "2 Bell peppers",
-        "1 Tomato sauce",
-        "2 Onion",
-        "1 Garlic",
-        "Salt & pepper",
-      ],
-      procedures: [
-        "Season chicken with salt and pepper.",
-        "Sauté garlic and onions; brown chicken pieces.",
-        "Add tomato sauce, potatoes, carrots, and bell peppers.",
-        "Simmer until chicken is tender and sauce thickens.",
-        "Adjust seasoning and serve warm.",
-      ],
-    },
-    {
-      id: 2,
-      name: "Fried Bangus",
-      desc: "Crispy fried milkfish served with a side of vinegar dipping sauce.",
-      img: require("../assets/images/fried-bangus.png"),
-      imgKey: 'fried-bangus',
-      price: 280,
-      ingredients: [
-        "Bangus (milkfish)",
-        "Salt & pepper",
-        "Garlic",
-        "Cooking oil",
-        "Vinegar dip",
-      ],
-      procedures: [
-        "Clean and pat dry the bangus.",
-        "Season with salt, pepper, and garlic.",
-        "Heat oil and fry bangus until golden and crispy.",
-        "Drain excess oil on paper towels.",
-        "Serve with vinegar dipping sauce.",
-      ],
-    },
-    {
-      id: 3,
-      name: "Pork Adobo",
-      desc: "Tender pork marinated and simmered in soy sauce, vinegar, garlic, and spices.",
-      img: require("../assets/images/pork-adobo.png"),
-      imgKey: 'pork-adobo',
-      price: 250,
-      ingredients: [
-        "Pork",
-        "Soy sauce",
-        "Vinegar",
-        "Garlic",
-        "Bay leaves",
-        "Pepper",
-        "Sugar (optional)",
-      ],
-      procedures: [
-        "Combine pork, soy sauce, vinegar, garlic, bay leaves, and pepper.",
-        "Marinate for at least 30 minutes.",
-        "Simmer until pork is tender and sauce reduces.",
-        "Adjust seasoning and add a pinch of sugar if desired.",
-        "Serve with steamed rice.",
-      ],
-    },
-    {
-      id: 4,
-      name: "Beef Mechado",
-      desc: "Beef stew cooked with tomatoes, potatoes, and carrots in a rich sauce.",
-      img: require("../assets/images/beef-mechado.png"),
-      imgKey: 'beef-mechado',
-      price: 350,
-      ingredients: [
-        "Beef",
-        "Tomato sauce",
-        "Potatoes",
-        "Carrots",
-        "Garlic & onion",
-        "Salt & pepper",
-      ],
-      procedures: [
-        "Brown beef in hot oil; set aside.",
-        "Sauté garlic and onions; add tomato sauce.",
-        "Return beef; add potatoes and carrots.",
-        "Simmer until beef is tender and sauce thickens.",
-        "Season to taste and serve.",
-      ],
-    },
-    {
-      id: 5,
-      name: "Lumpiang Shanghai",
-      desc: "Crispy fried spring rolls filled with ground pork and vegetables.",
-      img: require("../assets/images/lumpiang-shanghai.png"),
-      imgKey: 'lumpiang-shanghai',
-      price: 310,
-      ingredients: [
-        "Ground pork",
-        "Carrots",
-        "Onions",
-        "Garlic",
-        "Spring roll wrappers",
-        "Salt & pepper",
-        "Sweet chili sauce",
-      ],
-      procedures: [
-        "Mix ground pork with carrots, onions, garlic, and seasoning.",
-        "Wrap mixture in spring roll wrappers.",
-        "Seal edges and fry until golden brown.",
-        "Drain excess oil and serve with sweet chili sauce.",
-        "Enjoy while hot and crispy.",
-      ],
-    },
-  ];
+  // Load all recipes on mount and when servings change
+  useEffect(() => {
+    fetchAllRecipes(servings);
+  }, [servings]);
+
+  // Set up data sync listeners
+  useEffect(() => {
+    // Listen for sync events
+    syncListenerRef.current = dataSyncService.addSyncListener((syncEvent) => {
+      console.log('Sync event received:', syncEvent);
+      
+      if (syncEvent.success && syncEvent.type === 'background') {
+        // Background sync completed - refresh data silently
+        loadCachedRecipes();
+      }
+    });
+
+    // Listen for backend availability changes
+    backendListenerRef.current = dataSyncService.addBackendListener((isAvailable) => {
+      setIsOffline(!isAvailable);
+      
+      if (isAvailable && recipes.length === 0) {
+        // Backend became available and have no data - fetch immediately
+        fetchAllRecipes(servings, true);
+      }
+    });
+
+    // Get initial backend availability state
+    const syncStatus = dataSyncService.getSyncStatus();
+    setIsOffline(!syncStatus.isLocalBackendAvailable);
+
+    return () => {
+      // Clean up listeners
+      if (syncListenerRef.current) {
+        syncListenerRef.current();
+      }
+      if (backendListenerRef.current) {
+        backendListenerRef.current();
+      }
+    };
+  }, [servings, recipes.length]);
+
+  // Recalculate costs when budget changes (without refetching data)
+  useEffect(() => {
+    if (recipes.length > 0) {
+      // Update recipes with new cost calculations for current servings
+      const updatedRecipes = recipes.map(recipe => {
+        const costPerServing = recipe.totalCost / servings;
+        return {
+          ...recipe,
+          costPerServing: Math.round(costPerServing * 100) / 100
+        };
+      });
+      setRecipes(updatedRecipes);
+
+      // Notify data sync service about budget change for smart cache invalidation
+      dataSyncService.invalidateCacheIfNeeded('budget_change', {
+        newBudget: budget,
+        servings: servings
+      });
+    }
+  }, [budget, servings, recipes.length]);
+
+  // Load cached recipes without API call
+  const loadCachedRecipes = useCallback(async () => {
+    try {
+      const cached = await CacheService.getCachedRecipes();
+      if (cached && cached.recipes) {
+        console.log('Loading cached recipes for background sync update');
+        const transformedRecipes = RecipeTransformer.transformAllRecipes(
+          { data: cached.recipes }, 
+          servings
+        );
+        setRecipes(transformedRecipes);
+      }
+    } catch (error) {
+      console.warn('Failed to load cached recipes:', error);
+    }
+  }, [servings]);
+
+  const fetchAllRecipes = useCallback(async (currentServings, forceRefresh = false) => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Use data sync service to check backend availability
+      const syncStatus = dataSyncService.getSyncStatus();
+      setIsOffline(!syncStatus.isLocalBackendAvailable);
+
+      let recipeData;
+
+      if (syncStatus.isLocalBackendAvailable || forceRefresh) {
+        try {
+          // Use debounced API call through data sync service
+          const debouncedGetAllRecipes = dataSyncService.getDebouncedApiCall('getAllRecipes');
+          const response = await debouncedGetAllRecipes();
+          recipeData = RecipeTransformer.transformAllRecipes(response, currentServings);
+          
+          // Cache the results
+          await CacheService.cacheRecipes(recipeData, budget, currentServings);
+        } catch (apiError) {
+          console.warn('API call failed, falling back to cache:', apiError);
+          // Fall back to cache
+          const cached = await CacheService.getCachedRecipes();
+          if (cached && cached.servings === currentServings) {
+            recipeData = cached.recipes;
+            setIsOffline(true);
+          } else {
+            throw apiError;
+          }
+        }
+      } else {
+        // Load from cache when backend unavailable
+        const cached = await CacheService.getCachedRecipes();
+        if (cached && cached.servings === currentServings) {
+          recipeData = cached.recipes;
+        } else {
+          throw new Error('No cached data available for current serving size and backend is unavailable');
+        }
+      }
+
+      setRecipes(recipeData);
+    } catch (err) {
+      setError(err.message);
+      
+      // Try to load any cached data as final fallback
+      try {
+        const cached = await CacheService.getCachedRecipes();
+        if (cached) {
+          setRecipes(cached.recipes);
+          setIsOffline(true);
+        }
+      } catch (cacheErr) {
+        console.warn('Failed to load cached data:', cacheErr);
+      }
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }, [budget]);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    
+    // Use data sync service for coordinated refresh
+    dataSyncService.triggerSync({ force: true, type: 'manual' })
+      .then((result) => {
+        if (result.success) {
+          console.log('Manual sync completed successfully');
+        } else {
+          console.warn('Manual sync failed:', result.error);
+        }
+        // Always fetch recipes after sync attempt
+        fetchAllRecipes(servings, true);
+      })
+      .catch((error) => {
+        console.warn('Manual sync error:', error);
+        fetchAllRecipes(servings, true);
+      });
+  }, [servings, fetchAllRecipes]);
+
+  const retryFetch = useCallback(() => {
+    fetchAllRecipes(servings, true);
+  }, [servings, fetchAllRecipes]);
+
+  // Filter recipes by search query (client-side) with improved matching
+  const filteredRecipes = recipes.filter(recipe => {
+    if (!searchQuery.trim()) return true;
+    
+    const query = searchQuery.toLowerCase().trim();
+    const recipeName = recipe.name.toLowerCase();
+    const recipeDesc = recipe.desc ? recipe.desc.toLowerCase() : '';
+    
+    return recipeName.includes(query) || recipeDesc.includes(query);
+  });
+
+  // Calculate which recipes are within budget for visual feedback and sort them
+  const recipesWithBudgetStatus = filteredRecipes.map(recipe => {
+    const budgetPerServing = budget / servings;
+    const isWithinBudget = recipe.costPerServing <= budgetPerServing;
+    const exceedsBudgetBy = Math.max(0, recipe.costPerServing - budgetPerServing);
+    
+    return {
+      ...recipe,
+      isWithinBudget,
+      exceedsBudgetBy: Math.round(exceedsBudgetBy * 100) / 100
+    };
+  }).sort((a, b) => {
+    // Sort by budget availability first (available recipes at top)
+    if (a.isWithinBudget && !b.isWithinBudget) return -1;
+    if (!a.isWithinBudget && b.isWithinBudget) return 1;
+    
+    // Within same budget category, sort by cost per serving (cheaper first)
+    return a.costPerServing - b.costPerServing;
+  });
 
   // Determine number of columns based on screen width
   const { width } = useWindowDimensions();
   const cols = width < 360 ? 1 : width < 768 ? 2 : 3;
 
-  const filteredMeals = meals.filter(meal =>
-    meal.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  if (loading && !refreshing) {
+    return <LoadingSkeleton cols={cols} />;
+  }
+
+  if (error && recipes.length === 0) {
+    return (
+      <ErrorBoundary 
+        error={error} 
+        onRetry={retryFetch}
+        isOffline={isOffline}
+      />
+    );
+  }
+
+  if (recipesWithBudgetStatus.length === 0 && !loading) {
+    const isSearching = searchQuery.trim().length > 0;
+    
+    return (
+      <View style={{ padding: 20, alignItems: 'center' }}>
+        <Text style={{ 
+          fontFamily: 'Montserrat-Medium', 
+          fontSize: 16, 
+          color: theme.subtext,
+          textAlign: 'center',
+          marginBottom: 8
+        }}>
+          {isSearching 
+            ? `No recipes found matching "${searchQuery.trim()}"`
+            : 'No recipes available'
+          }
+        </Text>
+        {isSearching && (
+          <View style={{ alignItems: 'center' }}>
+            <Text style={{ 
+              fontFamily: 'Montserrat-Regular', 
+              fontSize: 14, 
+              color: theme.subtext,
+              textAlign: 'center',
+              marginBottom: 12
+            }}>
+              Try adjusting your search terms:
+            </Text>
+            <Text style={{ 
+              fontFamily: 'Montserrat-Regular', 
+              fontSize: 13, 
+              color: theme.subtext,
+              textAlign: 'center',
+              lineHeight: 18
+            }}>
+              • Check spelling{'\n'}
+              • Use simpler terms{'\n'}
+              • Try searching by main ingredient{'\n'}
+              • Clear search to see all recipes
+            </Text>
+          </View>
+        )}
+      </View>
+    );
+  }
 
   const renderMeal = ({ item, index }) => (
     <MealCard
       item={item}
       index={index}
       budget={budget}
+      servings={servings}
       cols={cols}
+      isOffline={isOffline}
+      isWithinBudget={item.isWithinBudget}
     />
   );
 
   return (
     <>
+      {isOffline && (
+        <View style={{ 
+          backgroundColor: theme.warning || '#FFA500', 
+          padding: 8, 
+          marginBottom: 8,
+          borderRadius: 4
+        }}>
+          <Text style={{ 
+            color: 'white', 
+            textAlign: 'center',
+            fontFamily: 'Montserrat-Medium'
+          }}>
+            Offline Mode - Showing cached recipes
+          </Text>
+        </View>
+      )}
+      
       <FlatList
-        data={filteredMeals}
+        data={recipesWithBudgetStatus}
         renderItem={renderMeal}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => item.id ? item.id.toString() : `recipe-${index}`}
         numColumns={cols}
         scrollEnabled={false}
         contentContainerStyle={{
@@ -161,9 +320,17 @@ const MealContainer = ({ budget, searchQuery }) => {
           paddingBottom: 4,
         }}
         columnWrapperStyle={cols > 1 ? { justifyContent: 'flex-start', gap: 8 } : undefined}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={theme.primary}
+          />
+        }
       />
     </>
-  )
-}
+  );
+};
+
 
 export default MealContainer

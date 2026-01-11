@@ -3,13 +3,14 @@ import { useRef, useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import { useTheme } from '../theme/ThemeProvider';
 
-const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
+const MealCard = ({ item, index, budget, servings = 4, cols = 2, isOffline = false, isWithinBudget = true }) => {
     const router = useRouter();
     const { theme } = useTheme();
     const fadeAnim = useRef(new Animated.Value(0)).current;
     const scaleAnim = useRef(new Animated.Value(0.8)).current;
 
-    const isOutOfBudget = item.price > budget;
+    // Use the passed isWithinBudget prop instead of calculating locally
+    const isOutOfBudget = !isWithinBudget;
     const dimAnim = useRef(new Animated.Value(isOutOfBudget ? 1 : 0)).current;
 
     // Initial mount animation
@@ -31,14 +32,14 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
         ]).start();
     }, [fadeAnim, scaleAnim, index]);
 
-    // Animate grey-out whenever budget changes
+    // Animate grey-out whenever budget status changes
     useEffect(() => {
         Animated.timing(dimAnim, {
             toValue: isOutOfBudget ? 1 : 0,
             duration: 250,
             useNativeDriver: true,
         }).start();
-    }, [isOutOfBudget, budget, dimAnim]);
+    }, [isOutOfBudget, isWithinBudget, dimAnim]);
 
     // Support both local require() and remote image URLs
     let imageSource = item.img;
@@ -80,9 +81,11 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                         router.push({
                             pathname: '/screens/MealView',
                             params: {
+                                id: item.id,
                                 name: item.name,
                                 desc: item.desc,
                                 imgKey: item.imgKey,
+                                servings: servings,
                                 ingredients: ingredientsStr,
                                 procedures: proceduresStr,
                                 // Pass optional video metadata for display
@@ -117,6 +120,54 @@ const MealCard = ({ item, index, budget, onGenerate, cols = 2 }) => {
                         <View style={{ padding: 10, paddingTop: 10, margin: 0 }}>
                             <Text style={{ fontFamily: 'Montserrat-Bold', fontSize: 16, textAlign: 'left', letterSpacing: -0.4, color: theme.text }}>{item.name}</Text>
                             <Text style={{ fontFamily: 'Montserrat-Regular', fontSize: 13, color: theme.subtext, marginTop: 4, textAlign: 'left', letterSpacing: -0.5 }} numberOfLines={3}>{item.desc}</Text>
+                            
+                            {/* Cost Information */}
+                            <View style={{ 
+                                flexDirection: 'row', 
+                                justifyContent: 'space-between', 
+                                alignItems: 'center',
+                                marginTop: 8,
+                                paddingTop: 8,
+                                borderTopWidth: 1,
+                                borderTopColor: theme.surface || '#f0f0f0'
+                            }}>
+                                <View>
+                                    <Text style={{ 
+                                        fontFamily: 'Montserrat-SemiBold', 
+                                        fontSize: 14, 
+                                        color: isWithinBudget ? theme.primary : theme.error || '#FF6B6B'
+                                    }}>
+                                        ₱{item.costPerServing?.toFixed(2) || '0.00'}
+                                    </Text>
+                                    <Text style={{ 
+                                        fontFamily: 'Montserrat-Regular', 
+                                        fontSize: 11, 
+                                        color: theme.subtext 
+                                    }}>
+                                        per serving
+                                    </Text>
+                                </View>
+                                
+                                <View style={{ alignItems: 'flex-end' }}>
+                                    <Text style={{ 
+                                        fontFamily: 'Montserrat-Medium', 
+                                        fontSize: 12, 
+                                        color: theme.subtext 
+                                    }}>
+                                        {servings} servings
+                                    </Text>
+                                    {isOffline && (
+                                        <Text style={{ 
+                                            fontFamily: 'Montserrat-Regular', 
+                                            fontSize: 10, 
+                                            color: theme.warning || '#FFA500',
+                                            marginTop: 2
+                                        }}>
+                                            Offline
+                                        </Text>
+                                    )}
+                                </View>
+                            </View>
                         </View>
                     </Animated.View>
                 </TouchableOpacity>
