@@ -1,11 +1,6 @@
 const Recipe = require('../models/Recipe');
 const RecipeScaler = require('../utils/recipeScaler');
-
-/**
- * Async handler wrapper to catch errors and pass to error middleware
- */
-const asyncHandler = (fn) => (req, res, next) =>
-  Promise.resolve(fn(req, res, next)).catch(next);
+const asyncHandler = require('../utils/asyncHandler');
 
 /**
  * @desc    Get all recipes with optional search and filtering
