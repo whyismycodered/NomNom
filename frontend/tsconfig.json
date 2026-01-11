@@ -1,0 +1,23 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "frontend/.expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "frontend/app/Home.js",
+    "frontend/app/_layout.js",
+    "frontend/components/BudgetInput.js",
+    "frontend/components/SearchBar.js",
+    "frontend/app/onboarding.js",
+    ".expo/types/**/*.ts"
+  ]
+}

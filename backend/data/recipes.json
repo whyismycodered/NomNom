@@ -1,0 +1,1892 @@
+[
+  {
+    "name": "Salmon Sinigang",
+    "description": "Fish soup.",
+    "servings": 4,
+    "prepTime": 10,
+    "cookTime": 20,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "salmon fillet",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 600.0,
+        "totalCost": 272.4
+      },
+      {
+        "name": "miso paste",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 350.0,
+        "totalCost": 10.5
+      },
+      {
+        "name": "calamansi juice",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 104.03,
+        "totalCost": 6.24
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 100.0,
+        "totalCost": 3.0
+      },
+      {
+        "name": "mustard greens",
+        "quantity": 1,
+        "unit": "bunch",
+        "costPerUnit": 85.26,
+        "totalCost": 25.58
+      },
+      {
+        "name": "radish",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 60.0,
+        "totalCost": 18.0
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Boil"
+      },
+      {
+        "step": 2,
+        "description": "Add fish"
+      }
+    ],
+    "totalCost": 335.72
+  },
+  {
+    "name": "Filipino Pancit Bihon",
+    "description": "A classic Filipino noodle dish with chicken and vegetables.",
+    "servings": 6,
+    "prepTime": 40,
+    "cookTime": 30,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "dried Golden Bihon Cornstarch Noodles",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 100.0,
+        "totalCost": 22.68
+      },
+      {
+        "name": "toasted sesame oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "costPerUnit": 600.0,
+        "totalCost": 27.0
+      },
+      {
+        "name": "boneless, skinless chicken breasts",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 203.57,
+        "totalCost": 92.34
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 2.5,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.5
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "garlic",
+        "quantity": 5,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 8.19
+      },
+      {
+        "name": "carrots",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 253.54,
+        "totalCost": 57.5
+      },
+      {
+        "name": "green cabbage",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 102.93,
+        "totalCost": 23.34
+      },
+      {
+        "name": "snow peas",
+        "quantity": 0.17,
+        "unit": "kg",
+        "costPerUnit": 137.89,
+        "totalCost": 23.46
+      },
+      {
+        "name": "black pepper",
+        "quantity": 1,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 5.0
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "scallions",
+        "quantity": 2,
+        "unit": "pc",
+        "costPerUnit": 200.0,
+        "totalCost": 8.0
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 104.03,
+        "totalCost": 5.2
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Bring a large saucepan of water to a boil over medium-high heat. Turn off the heat. Add noodles and make sure they are submerged. Let sit until softened, about 5 minutes. Drain."
+      },
+      {
+        "step": 2,
+        "description": "Heat 1 tablespoon of the toasted sesame oil in a large wok or 12-inch frying pan on medium-high heat until shimmering. Add chicken breast chunks and spread into an even layer. Season with 1/2 teaspoon of the kosher salt. Cook undisturbed until browned on the bottom, 3 to 4 minutes. Stir-fry until lightly browned and cooked through, 3 to 5 minutes more. Transfer to a plate."
+      },
+      {
+        "step": 3,
+        "description": "Add the remaining 1 tablespoon toasted sesame oil to the pan. Add diced onion and minced garlic. Stir-fry until softened, about 2 minutes. Add carrots, season with remaining salt, and stir-fry until crisp-tender, about 2 minutes."
+      },
+      {
+        "step": 4,
+        "description": "Add shredded green cabbage and stir-fry until slightly wilted, about 2 minutes. Add snow peas and black pepper, and stir-fry until crisp-tender, about 2 minutes."
+      },
+      {
+        "step": 5,
+        "description": "Add the noodles and chicken. Drizzle with soy sauce and season with pepper. Stir-fry until combined."
+      },
+      {
+        "step": 6,
+        "description": "Add half of the sliced scallions and stir-fry for 1 minute more. Garnish with remaining scallions and serve with lime wedges."
+      }
+    ],
+    "totalCost": 300.89
+  },
+  {
+    "name": "Lumpia Shanghai",
+    "description": "Filipino spring rolls filled with pork and vegetables.",
+    "servings": 25,
+    "prepTime": 60,
+    "cookTime": 30,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "lumpia or spring roll wrappers",
+        "quantity": 1,
+        "unit": "pack",
+        "costPerUnit": 100.0,
+        "totalCost": 100.0
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "scallions",
+        "quantity": 2,
+        "unit": "pc",
+        "costPerUnit": 200.0,
+        "totalCost": 8.0
+      },
+      {
+        "name": "carrot",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 253.54,
+        "totalCost": 38.03
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 4.91
+      },
+      {
+        "name": "egg",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 8.61,
+        "totalCost": 8.61
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 3.5,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.7
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 2.5
+      },
+      {
+        "name": "ground pork",
+        "quantity": 0.68,
+        "unit": "kg",
+        "costPerUnit": 363.17,
+        "totalCost": 247.1
+      },
+      {
+        "name": "canola oil",
+        "quantity": 2,
+        "unit": "cup",
+        "costPerUnit": 120.0,
+        "totalCost": 57.6
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Thaw wrappers if needed."
+      },
+      {
+        "step": 2,
+        "description": "Place chopped onion, scallions, grated carrot, and garlic in a large bowl."
+      },
+      {
+        "step": 3,
+        "description": "Add egg yolk to vegetables, reserve white. Add salt and pepper, stir. Add ground pork and mix well."
+      },
+      {
+        "step": 4,
+        "description": "Separate wrappers. Place one wrapper in diamond shape. Place filling near bottom, fold bottom up, sides in, and roll. Seal with egg white."
+      },
+      {
+        "step": 5,
+        "description": "Repeat with remaining wrappers."
+      },
+      {
+        "step": 6,
+        "description": "Heat oil to 330-350 F. Fry lumpia in batches until golden brown, 2-3 minutes per side."
+      },
+      {
+        "step": 7,
+        "description": "Drain on paper towels. Serve."
+      }
+    ],
+    "totalCost": 487.93
+  },
+  {
+    "name": "Filipino Chicken Adobo",
+    "description": "Classic Filipino chicken stew marinated in vinegar and soy sauce.",
+    "servings": "4 to 6",
+    "prepTime": 5,
+    "cookTime": 42,
+    "difficulty": "Easy",
+    "ingredients": [
+      {
+        "name": "garlic",
+        "quantity": 5,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 8.19
+      },
+      {
+        "name": "chicken thighs/drumsticks",
+        "quantity": 1.361,
+        "unit": "kg",
+        "costPerUnit": 203.57,
+        "totalCost": 277.02
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.1
+      },
+      {
+        "name": "neutral oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 1.8
+      },
+      {
+        "name": "dried bay leaves",
+        "quantity": 3,
+        "unit": "pc",
+        "costPerUnit": 2000.0,
+        "totalCost": 6.0
+      },
+      {
+        "name": "whole black peppercorns",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 10.0
+      },
+      {
+        "name": "water",
+        "quantity": 2,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "cane vinegar",
+        "quantity": 0.33,
+        "unit": "cup",
+        "costPerUnit": 40.0,
+        "totalCost": 3.17
+      },
+      {
+        "name": "oyster sauce",
+        "quantity": 3,
+        "unit": "tbsp",
+        "costPerUnit": 200.0,
+        "totalCost": 9.0
+      },
+      {
+        "name": "steamed white rice",
+        "quantity": 1.333,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 13.17
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Smash and peel 5 garlic cloves. Pat chicken dry and season with salt."
+      },
+      {
+        "step": 2,
+        "description": "Heat oil in Dutch oven. Sear chicken in batches until browned, about 6 mins. Transfer to plate."
+      },
+      {
+        "step": 3,
+        "description": "Toast garlic, bay leaves, peppercorns in pot. Add water, soy sauce, vinegar, oyster sauce. Scrape bottom."
+      },
+      {
+        "step": 4,
+        "description": "Return chicken to pot. Boil, then simmer uncovered 20 mins until cooked through (165F)."
+      },
+      {
+        "step": 5,
+        "description": "Preheat broiler. Transfer chicken to baking sheet. Broil 3 mins until browned."
+      },
+      {
+        "step": 6,
+        "description": "Flip chicken, brush with sauce, broil 3 mins more. Serve with rice and sauce."
+      }
+    ],
+    "totalCost": 335.65
+  },
+  {
+    "name": "Sinangag (Filipino Garlic Fried Rice)",
+    "description": "Fried rice with plenty of garlic.",
+    "servings": 4,
+    "prepTime": 5,
+    "cookTime": 10,
+    "difficulty": "Easy",
+    "ingredients": [
+      {
+        "name": "garlic",
+        "quantity": 8,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 13.1
+      },
+      {
+        "name": "cold cooked jasmine rice",
+        "quantity": 1.0,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 9.88
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.4
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.75,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 3.75
+      },
+      {
+        "name": "canola oil",
+        "quantity": 3,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 5.4
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Thinly slice 4 garlic cloves, mince 4."
+      },
+      {
+        "step": 2,
+        "description": "Break up cold rice. Toss with minced garlic, salt, pepper."
+      },
+      {
+        "step": 3,
+        "description": "Heat 2 tbsp oil. Fry sliced garlic until golden."
+      },
+      {
+        "step": 4,
+        "description": "Add remaining oil and rice. Stir fry until coated and crust forms, 6-7 mins."
+      },
+      {
+        "step": 5,
+        "description": "Season with salt/pepper. Serve."
+      }
+    ],
+    "totalCost": 32.53
+  },
+  {
+    "name": "Ginataan Na Sugpo (Prawns with Coconut Milk)",
+    "description": "Rich prawn stew with coconut milk and aromatics.",
+    "servings": "4 to 6",
+    "prepTime": 30,
+    "cookTime": 50,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "ginger",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 192.39,
+        "totalCost": 5.77
+      },
+      {
+        "name": "serrano peppers",
+        "quantity": 2,
+        "unit": "pc",
+        "costPerUnit": 300.0,
+        "totalCost": 30.0
+      },
+      {
+        "name": "scallions",
+        "quantity": 0.5,
+        "unit": "bunch",
+        "costPerUnit": 200.0,
+        "totalCost": 2.0
+      },
+      {
+        "name": "red onions",
+        "quantity": 1.5,
+        "unit": "pc",
+        "costPerUnit": 160.66,
+        "totalCost": 36.15
+      },
+      {
+        "name": "lime",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 104.03,
+        "totalCost": 5.2
+      },
+      {
+        "name": "lemongrass",
+        "quantity": 3,
+        "unit": "stalk",
+        "costPerUnit": 150.0,
+        "totalCost": 22.5
+      },
+      {
+        "name": "canola oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 1.8
+      },
+      {
+        "name": "anchovy fillets",
+        "quantity": 0.113,
+        "unit": "kg",
+        "costPerUnit": 1200.0,
+        "totalCost": 136.08
+      },
+      {
+        "name": "tomatoes",
+        "quantity": 0.397,
+        "unit": "kg",
+        "costPerUnit": 132.87,
+        "totalCost": 52.74
+      },
+      {
+        "name": "greens (spinach/chile leaves)",
+        "quantity": 0.085,
+        "unit": "kg",
+        "costPerUnit": 85.26,
+        "totalCost": 7.25
+      },
+      {
+        "name": "prawns",
+        "quantity": 0.68,
+        "unit": "kg",
+        "costPerUnit": 865.0,
+        "totalCost": 588.55
+      },
+      {
+        "name": "coconut milk",
+        "quantity": 0.737,
+        "unit": "kg",
+        "costPerUnit": 150.0,
+        "totalCost": 110.56
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.1
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 1.25
+      },
+      {
+        "name": "jasmine rice",
+        "quantity": 4,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 39.52
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Prepare ingredients: mince ginger, slice peppers/scallions, chop onions, zest lime."
+      },
+      {
+        "step": 2,
+        "description": "Make lemongrass bundle."
+      },
+      {
+        "step": 3,
+        "description": "Heat oil. Cook lemongrass, aromatics, anchovies until soft."
+      },
+      {
+        "step": 4,
+        "description": "Add tomatoes, cook until collapsed."
+      },
+      {
+        "step": 5,
+        "description": "Add coconut milk, salt, pepper. Simmer to reduce."
+      },
+      {
+        "step": 6,
+        "description": "Add prawns. Simmer until cooked."
+      },
+      {
+        "step": 7,
+        "description": "Add greens/peppers. Serve with rice/lime."
+      }
+    ],
+    "totalCost": 1039.47
+  },
+  {
+    "name": "Mechado (Filipino Beef Stew)",
+    "description": "Tomato-based beef stew with vegetables.",
+    "servings": 6,
+    "prepTime": 20,
+    "cookTime": 165,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "neutral oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 1.8
+      },
+      {
+        "name": "boneless beef chuck roast",
+        "quantity": 1.361,
+        "unit": "kg",
+        "costPerUnit": 474.33,
+        "totalCost": 645.47
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "garlic",
+        "quantity": 5,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 8.19
+      },
+      {
+        "name": "water",
+        "quantity": 3,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 0.425,
+        "unit": "kg",
+        "costPerUnit": 132.87,
+        "totalCost": 56.5
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.33,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 4.75
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 80.0,
+        "totalCost": 1.2
+      },
+      {
+        "name": "dried bay leaves",
+        "quantity": 3,
+        "unit": "pc",
+        "costPerUnit": 2000.0,
+        "totalCost": 6.0
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 1.25
+      },
+      {
+        "name": "Yukon Gold potatoes",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 110.26,
+        "totalCost": 50.01
+      },
+      {
+        "name": "carrots",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 253.54,
+        "totalCost": 57.5
+      },
+      {
+        "name": "red bell pepper",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 250.0,
+        "totalCost": 37.5
+      },
+      {
+        "name": "steamed white rice",
+        "quantity": 2.0,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 19.76
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Sear beef in batches. Set aside."
+      },
+      {
+        "step": 2,
+        "description": "Cook onion and garlic. Add water, tomato sauce, soy sauce, sugar, bay leaves, pepper."
+      },
+      {
+        "step": 3,
+        "description": "Return beef. Simmer 1h 20m."
+      },
+      {
+        "step": 4,
+        "description": "Add potatoes, carrots, bell pepper. Cook 1h more."
+      },
+      {
+        "step": 5,
+        "description": "Serve with rice."
+      }
+    ],
+    "totalCost": 910.41
+  },
+  {
+    "name": "Filipino Chicken Inasal",
+    "description": "Grilled chicken marinated in lemongrass, calamansi, and annatto.",
+    "servings": 6,
+    "prepTime": 20,
+    "cookTime": 15,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "olive oil",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 120.0,
+        "totalCost": 14.4
+      },
+      {
+        "name": "ground annatto",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 500.0,
+        "totalCost": 7.5
+      },
+      {
+        "name": "lemongrass",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 150.0,
+        "totalCost": 4.5
+      },
+      {
+        "name": "ginger",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 192.39,
+        "totalCost": 5.77
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 6.55
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 80.0,
+        "totalCost": 4.0
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 3.6
+      },
+      {
+        "name": "cane vinegar",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 40.0,
+        "totalCost": 2.4
+      },
+      {
+        "name": "calamansi juice",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 104.03,
+        "totalCost": 3.12
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 1,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.2
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 2.5
+      },
+      {
+        "name": "chicken thighs",
+        "quantity": 1.361,
+        "unit": "kg",
+        "costPerUnit": 203.57,
+        "totalCost": 277.02
+      },
+      {
+        "name": "steamed white rice",
+        "quantity": 2.0,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 19.76
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Make annatto oil (heat oil and annatto). Cool."
+      },
+      {
+        "step": 2,
+        "description": "Mix marinade: annatto oil, lemongrass, ginger, garlic, sugar, soy sauce, vinegar, calamansi, salt, pepper."
+      },
+      {
+        "step": 3,
+        "description": "Marinate chicken 4+ hours."
+      },
+      {
+        "step": 4,
+        "description": "Grill chicken, basting with oil, until cooked (165F)."
+      },
+      {
+        "step": 5,
+        "description": "Serve with rice."
+      }
+    ],
+    "totalCost": 351.32
+  },
+  {
+    "name": "Bola-Bola (Filipino Meatballs)",
+    "description": "Fried pork meatballs with vegetables.",
+    "servings": 4,
+    "prepTime": 20,
+    "cookTime": 20,
+    "difficulty": "Easy",
+    "ingredients": [
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "carrot",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 253.54,
+        "totalCost": 38.03
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 4.91
+      },
+      {
+        "name": "ground pork",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 363.17,
+        "totalCost": 164.88
+      },
+      {
+        "name": "panko breadcrumbs",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 150.0,
+        "totalCost": 4.5
+      },
+      {
+        "name": "large egg",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 8.61,
+        "totalCost": 8.61
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 60.0,
+        "totalCost": 0.9
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 100.0,
+        "totalCost": 1.0
+      },
+      {
+        "name": "oyster sauce",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 200.0,
+        "totalCost": 2.0
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.05
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 1.25
+      },
+      {
+        "name": "neutral oil",
+        "quantity": 2,
+        "unit": "cup",
+        "costPerUnit": 120.0,
+        "totalCost": 57.6
+      },
+      {
+        "name": "sweet chili sauce",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 200.0,
+        "totalCost": 12.0
+      },
+      {
+        "name": "cooked white rice",
+        "quantity": 1.333,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 13.17
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Grate onion, carrot, garlic. Mix with pork, panko, egg, sauces, salt, pepper."
+      },
+      {
+        "step": 2,
+        "description": "Form into balls."
+      },
+      {
+        "step": 3,
+        "description": "Heat oil to 350F. Fry meatballs 5-6 mins."
+      },
+      {
+        "step": 4,
+        "description": "Serve with chili sauce and rice."
+      }
+    ],
+    "totalCost": 329.38
+  },
+  {
+    "name": "Filipino Spaghetti",
+    "description": "Sweet style spaghetti with hot dogs and ground beef.",
+    "servings": "6 to 8",
+    "prepTime": 10,
+    "cookTime": 30,
+    "difficulty": "Easy",
+    "ingredients": [
+      {
+        "name": "dried spaghetti",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 150.0,
+        "totalCost": 68.1
+      },
+      {
+        "name": "olive oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 3.6
+      },
+      {
+        "name": "beef hot dogs",
+        "quantity": 5,
+        "unit": "pc",
+        "costPerUnit": 474.33,
+        "totalCost": 118.58
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 6.55
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "ground beef",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 474.33,
+        "totalCost": 215.35
+      },
+      {
+        "name": "dried bay leaves",
+        "quantity": 3,
+        "unit": "pc",
+        "costPerUnit": 2000.0,
+        "totalCost": 6.0
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 0.75,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.15
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 1.25
+      },
+      {
+        "name": "tomato paste",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 132.87,
+        "totalCost": 3.99
+      },
+      {
+        "name": "tomato sauce",
+        "quantity": 0.794,
+        "unit": "kg",
+        "costPerUnit": 132.87,
+        "totalCost": 105.5
+      },
+      {
+        "name": "water",
+        "quantity": 1,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "ketchup",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 150.0,
+        "totalCost": 9.0
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 60.0,
+        "totalCost": 1.8
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 100.0,
+        "totalCost": 1.5
+      },
+      {
+        "name": "sugar",
+        "quantity": 1.5,
+        "unit": "tsp",
+        "costPerUnit": 80.0,
+        "totalCost": 0.6
+      },
+      {
+        "name": "cheddar cheese",
+        "quantity": 1,
+        "unit": "cup",
+        "costPerUnit": 400.0,
+        "totalCost": 40.0
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Boil pasta. Cook hot dogs in oil, remove."
+      },
+      {
+        "step": 2,
+        "description": "Cook garlic and onion. Add beef, bay leaves, salt, pepper, cook until brown."
+      },
+      {
+        "step": 3,
+        "description": "Add tomato paste, cook 1 min. Add hot dogs, sauce, water, ketchup, soy sauce, fish sauce, sugar. Simmer 10 mins."
+      },
+      {
+        "step": 4,
+        "description": "Toss pasta with sauce. Top with cheese."
+      }
+    ],
+    "totalCost": 602.45
+  },
+  {
+    "name": "Filipino Beef Short Ribs Adobo",
+    "description": "Tender short ribs braised in adobo sauce.",
+    "servings": "4 to 6",
+    "prepTime": 5,
+    "cookTime": 180,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "beef short ribs",
+        "quantity": 1.361,
+        "unit": "kg",
+        "costPerUnit": 474.33,
+        "totalCost": 645.56
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.1
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 1.25
+      },
+      {
+        "name": "neutral oil",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 1.8
+      },
+      {
+        "name": "garlic",
+        "quantity": 6,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 9.82
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "water",
+        "quantity": 2,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "cane vinegar",
+        "quantity": 0.33,
+        "unit": "cup",
+        "costPerUnit": 40.0,
+        "totalCost": 3.17
+      },
+      {
+        "name": "oyster sauce",
+        "quantity": 3,
+        "unit": "tbsp",
+        "costPerUnit": 200.0,
+        "totalCost": 9.0
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 80.0,
+        "totalCost": 0.8
+      },
+      {
+        "name": "dried bay leaves",
+        "quantity": 3,
+        "unit": "pc",
+        "costPerUnit": 2000.0,
+        "totalCost": 6.0
+      },
+      {
+        "name": "whole black peppercorns",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 10.0
+      },
+      {
+        "name": "Yukon Gold potatoes",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 110.26,
+        "totalCost": 50.06
+      },
+      {
+        "name": "steamed white rice",
+        "quantity": 1.333,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 13.17
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Sear seasoned ribs in oil. Set aside."
+      },
+      {
+        "step": 2,
+        "description": "Cook garlic and onion. Add liquids and spices (water, soy, vinegar, oyster sauce, sugar, bay, pepper)."
+      },
+      {
+        "step": 3,
+        "description": "Return ribs. Bake covered at 325F for 1 hour."
+      },
+      {
+        "step": 4,
+        "description": "Add potatoes. Bake 1-1.5 hours more until tender."
+      },
+      {
+        "step": 5,
+        "description": "Serve with rice."
+      }
+    ],
+    "totalCost": 778.41
+  },
+  {
+    "name": "Lumpiang Sariwa (Fresh Lumpia)",
+    "description": "Fresh spring rolls with crepe-like wrapper and peanut sauce.",
+    "servings": "4 to 8",
+    "prepTime": 60,
+    "cookTime": 60,
+    "difficulty": "Hard",
+    "ingredients": [
+      {
+        "name": "carrot",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 253.54,
+        "totalCost": 38.03
+      },
+      {
+        "name": "red bell pepper",
+        "quantity": 0.5,
+        "unit": "pc",
+        "costPerUnit": 250.0,
+        "totalCost": 18.75
+      },
+      {
+        "name": "green beans",
+        "quantity": 0.085,
+        "unit": "kg",
+        "costPerUnit": 137.89,
+        "totalCost": 11.72
+      },
+      {
+        "name": "sweet potato",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 87.42,
+        "totalCost": 17.48
+      },
+      {
+        "name": "cabbage",
+        "quantity": 0.17,
+        "unit": "kg",
+        "costPerUnit": 102.93,
+        "totalCost": 17.5
+      },
+      {
+        "name": "celery",
+        "quantity": 1,
+        "unit": "stalk",
+        "costPerUnit": 200.0,
+        "totalCost": 10.0
+      },
+      {
+        "name": "shallot",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 160.66,
+        "totalCost": 24.1
+      },
+      {
+        "name": "garlic",
+        "quantity": 5,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 8.19
+      },
+      {
+        "name": "cilantro",
+        "quantity": 2,
+        "unit": "sprigs",
+        "costPerUnit": 300.0,
+        "totalCost": 1.2
+      },
+      {
+        "name": "oyster sauce",
+        "quantity": 1.5,
+        "unit": "tbsp",
+        "costPerUnit": 200.0,
+        "totalCost": 4.5
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 1.5,
+        "unit": "tsp",
+        "costPerUnit": 100.0,
+        "totalCost": 0.75
+      },
+      {
+        "name": "black pepper",
+        "quantity": 3,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 15.0
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 2,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.4
+      },
+      {
+        "name": "msg",
+        "quantity": 0.25,
+        "unit": "tsp",
+        "costPerUnit": 200.0,
+        "totalCost": 0.25
+      },
+      {
+        "name": "Chinese sausage",
+        "quantity": 0.071,
+        "unit": "kg",
+        "costPerUnit": 400.0,
+        "totalCost": 28.4
+      },
+      {
+        "name": "shrimp",
+        "quantity": 0.113,
+        "unit": "kg",
+        "costPerUnit": 865.0,
+        "totalCost": 97.75
+      },
+      {
+        "name": "canola oil",
+        "quantity": 0.25,
+        "unit": "cup",
+        "costPerUnit": 120.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "water",
+        "quantity": 4.5,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "cornstarch",
+        "quantity": 6,
+        "unit": "tbsp",
+        "costPerUnit": 80.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "brown sugar",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 90.0,
+        "totalCost": 10.8
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.33,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 4.75
+      },
+      {
+        "name": "peanuts",
+        "quantity": 0.33,
+        "unit": "cup",
+        "costPerUnit": 250.0,
+        "totalCost": 19.8
+      },
+      {
+        "name": "bib lettuce",
+        "quantity": 1,
+        "unit": "head",
+        "costPerUnit": 150.0,
+        "totalCost": 45.0
+      },
+      {
+        "name": "all-purpose flour",
+        "quantity": 1.5,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 11.25
+      },
+      {
+        "name": "eggs",
+        "quantity": 2,
+        "unit": "pc",
+        "costPerUnit": 8.61,
+        "totalCost": 17.22
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Make filling: Cut veggies (carrot, pepper, green beans, sweet potato, cabbage, celery, shallot). Chop garlic. Mix cilantro with sauces."
+      },
+      {
+        "step": 2,
+        "description": "Cook shallot, garlic, sausage, shrimp. Add veggies in order. Cool."
+      },
+      {
+        "step": 3,
+        "description": "Make sauce: Boil water, garlic, sugar, soy sauce. Thicken with cornstarch. Season."
+      },
+      {
+        "step": 4,
+        "description": "Make wrappers: Whisk flour, cornstarch, salt. Whisk wet ingredients. Combine. Cook like crepes."
+      },
+      {
+        "step": 5,
+        "description": "Assemble: Lettuce, filling, wrap. Top with sauce and peanuts."
+      }
+    ],
+    "totalCost": 402.24
+  },
+  {
+    "name": "Sinigang (Pork Ribs)",
+    "description": "Sour tamarind soup with pork ribs and vegetables.",
+    "servings": "4 to 6",
+    "prepTime": 30,
+    "cookTime": 60,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "pork ribs",
+        "quantity": 0.68,
+        "unit": "kg",
+        "costPerUnit": 346.54,
+        "totalCost": 235.65
+      },
+      {
+        "name": "neutral oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 3.6
+      },
+      {
+        "name": "tomatoes",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 132.87,
+        "totalCost": 30.16
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "garlic",
+        "quantity": 3,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 4.91
+      },
+      {
+        "name": "water",
+        "quantity": 5,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "hot green pepper",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 300.0,
+        "totalCost": 15.0
+      },
+      {
+        "name": "tamarind soup base",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 500.0,
+        "totalCost": 15.0
+      },
+      {
+        "name": "fish sauce",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 100.0,
+        "totalCost": 3.0
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 1,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.2
+      },
+      {
+        "name": "daikon radish",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 60.0,
+        "totalCost": 27.24
+      },
+      {
+        "name": "eggplant",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 104.24,
+        "totalCost": 47.32
+      },
+      {
+        "name": "okra",
+        "quantity": 0.113,
+        "unit": "kg",
+        "costPerUnit": 100.0,
+        "totalCost": 11.3
+      },
+      {
+        "name": "long beans",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 137.89,
+        "totalCost": 31.3
+      },
+      {
+        "name": "water spinach",
+        "quantity": 0.085,
+        "unit": "kg",
+        "costPerUnit": 85.26,
+        "totalCost": 7.25
+      },
+      {
+        "name": "steamed white rice",
+        "quantity": 1.333,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 13.17
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Sear pork ribs. Remove."
+      },
+      {
+        "step": 2,
+        "description": "Saute onion, tomato, garlic."
+      },
+      {
+        "step": 3,
+        "description": "Add water, pork, tamarind, fish sauce, salt. Boil 20 mins."
+      },
+      {
+        "step": 4,
+        "description": "Add daikon, eggplant, okra. Simmer 13 mins."
+      },
+      {
+        "step": 5,
+        "description": "Add beans. Cook 2-3 mins. Add water spinach. Serve."
+      }
+    ],
+    "totalCost": 465.58
+  },
+  {
+    "name": "Picadillo",
+    "description": "Ground meat stew with potatoes and raisins.",
+    "servings": 4,
+    "prepTime": 10,
+    "cookTime": 30,
+    "difficulty": "Easy",
+    "ingredients": [
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 6.55
+      },
+      {
+        "name": "potatoes",
+        "quantity": 0.227,
+        "unit": "kg",
+        "costPerUnit": 110.26,
+        "totalCost": 25.03
+      },
+      {
+        "name": "vegetable oil",
+        "quantity": 2,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 3.6
+      },
+      {
+        "name": "ground beef/pork",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 474.33,
+        "totalCost": 215.35
+      },
+      {
+        "name": "kosher salt",
+        "quantity": 2.5,
+        "unit": "tsp",
+        "costPerUnit": 40.0,
+        "totalCost": 0.5
+      },
+      {
+        "name": "tomato paste",
+        "quantity": 1,
+        "unit": "tbsp",
+        "costPerUnit": 200.0,
+        "totalCost": 3.0
+      },
+      {
+        "name": "diced tomatoes",
+        "quantity": 0.411,
+        "unit": "kg",
+        "costPerUnit": 120.0,
+        "totalCost": 49.32
+      },
+      {
+        "name": "water",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 0.0,
+        "totalCost": 0.0
+      },
+      {
+        "name": "paprika",
+        "quantity": 1,
+        "unit": "tsp",
+        "costPerUnit": 600.0,
+        "totalCost": 3.0
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 2.5
+      },
+      {
+        "name": "frozen peas and carrots",
+        "quantity": 1,
+        "unit": "cup",
+        "costPerUnit": 200.0,
+        "totalCost": 30.0
+      },
+      {
+        "name": "raisins",
+        "quantity": 0.66,
+        "unit": "cup",
+        "costPerUnit": 300.0,
+        "totalCost": 29.7
+      },
+      {
+        "name": "cooked white rice",
+        "quantity": 1.333,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 13.17
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Chop onion, garlic, potatoes."
+      },
+      {
+        "step": 2,
+        "description": "Brown meat with salt."
+      },
+      {
+        "step": 3,
+        "description": "Add onion, garlic. Cook."
+      },
+      {
+        "step": 4,
+        "description": "Add tomato paste, potatoes, diced tomatoes, water, paprika, pepper, salt. Simmer 15-18 mins."
+      },
+      {
+        "step": 5,
+        "description": "Add peas, carrots, raisins. Cook 4 mins."
+      },
+      {
+        "step": 6,
+        "description": "Serve with rice."
+      }
+    ],
+    "totalCost": 402.2
+  },
+  {
+    "name": "Bistek (Beef Marinated with Calamansi, Soy and Onions)",
+    "description": "Filipino beef steak.",
+    "servings": 4,
+    "prepTime": 35,
+    "cookTime": 20,
+    "difficulty": "Medium",
+    "ingredients": [
+      {
+        "name": "boneless ribeye steak",
+        "quantity": 0.454,
+        "unit": "kg",
+        "costPerUnit": 474.33,
+        "totalCost": 215.35
+      },
+      {
+        "name": "yellow onion",
+        "quantity": 1,
+        "unit": "pc",
+        "costPerUnit": 136.56,
+        "totalCost": 20.48
+      },
+      {
+        "name": "garlic",
+        "quantity": 4,
+        "unit": "cloves",
+        "costPerUnit": 327.48,
+        "totalCost": 6.55
+      },
+      {
+        "name": "soy sauce",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 60.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "calamansi juice",
+        "quantity": 0.5,
+        "unit": "cup",
+        "costPerUnit": 104.03,
+        "totalCost": 12.48
+      },
+      {
+        "name": "bay leaves",
+        "quantity": 4,
+        "unit": "pc",
+        "costPerUnit": 2000.0,
+        "totalCost": 8.0
+      },
+      {
+        "name": "black pepper",
+        "quantity": 0.5,
+        "unit": "tsp",
+        "costPerUnit": 1000.0,
+        "totalCost": 2.5
+      },
+      {
+        "name": "canola oil",
+        "quantity": 4,
+        "unit": "tbsp",
+        "costPerUnit": 120.0,
+        "totalCost": 7.2
+      },
+      {
+        "name": "cooked rice",
+        "quantity": 1.333,
+        "unit": "cup",
+        "costPerUnit": 41.17,
+        "totalCost": 13.17
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Freeze steak slightly, then slice thin. Slice onion and garlic."
+      },
+      {
+        "step": 2,
+        "description": "Marinate steak with soy sauce, calamansi, bay leaves, pepper for 30 mins."
+      },
+      {
+        "step": 3,
+        "description": "Strain steak, reserve marinade. Separate onions/bay leaves."
+      },
+      {
+        "step": 4,
+        "description": "Sear onions in oil until caramelized. Remove."
+      },
+      {
+        "step": 5,
+        "description": "Sear steak in hot oil. Remove."
+      },
+      {
+        "step": 6,
+        "description": "Simmer marinade until thickened. Add onions. Pour over steak."
+      },
+      {
+        "step": 7,
+        "description": "Serve with rice."
+      }
+    ],
+    "totalCost": 292.93
+  }
+]
